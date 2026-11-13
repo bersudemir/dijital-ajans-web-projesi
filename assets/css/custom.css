@@ -1,0 +1,53 @@
+/* Projeye özel stiller. Orijinal app.css dosyasından SONRA yüklenmelidir. */
+:root {
+  --agency-accent: #465fff;
+  --agency-section-space: 5rem;
+}
+
+body {
+  scroll-behavior: smooth;
+}
+
+.agency-page-header {
+  padding: 4.5rem 0 3rem;
+}
+
+.agency-section {
+  padding: var(--agency-section-space) 0;
+}
+
+.agency-card {
+  height: 100%;
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.agency-card:hover {
+  transform: translateY(-4px);
+}
+
+.agency-service-image {
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  width: 100%;
+}
+
+.agency-stat-value {
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  font-weight: 700;
+}
+
+.agency-footer-link {
+  text-decoration: none;
+}
+
+.agency-footer-link:hover {
+  text-decoration: underline;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    transition-duration: .01ms !important;
+    animation-duration: .01ms !important;
+  }
+}

@@ -67,6 +67,30 @@ html {
   width: min(100%, 11rem);
 }
 
+.agency-admin {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  grid-template-columns: minmax(0, 1fr);
+}
+
+[data-admin-shell] {
+  display: contents;
+}
+
+.agency-admin-header {
+  grid-column: 1 / -1;
+}
+
+.agency-admin-main {
+  min-width: 0;
+}
+
+@media (min-width: 992px) {
+  .agency-admin {
+    grid-template-columns: 15rem minmax(0, 1fr);
+  }
+}
+
 .agency-step {
   display: inline-flex;
   align-items: center;

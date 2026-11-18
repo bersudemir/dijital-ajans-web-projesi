@@ -11,6 +11,6 @@ export const AppConfig = Object.freeze({
     announcements: 'duyurular.html',
     stats: 'sayilarla-ajans.html',
     contact: 'iletisim.html',
-    adminDashboard: 'dashboard.html'
+    adminDashboard: 'admin/index.html'
   })
 });

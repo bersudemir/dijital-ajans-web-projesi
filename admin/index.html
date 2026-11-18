@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dashboard | NovaSoft Ajans Yönetimi</title>
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../assets/css/app.css">
+  <link rel="stylesheet" href="../assets/css/custom.css">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" defer></script>
+  <script type="module" src="../assets/js/app/pages/admin/dashboard-page.js"></script>
+</head>
+<body class="agency-admin bg-light" data-admin-page="index">
+  <a class="agency-skip-link" href="#admin-main">İçeriğe geç</a>
+  <div data-admin-shell></div>
+  <main id="admin-main" class="agency-admin-main p-3 p-md-4" tabindex="-1">
+    <div class="mb-4">
+      <h1 class="h2 fw-bold">Dashboard</h1>
+      <p class="text-secondary mb-0">Ajansın içerik durumunu ve son duyurularını inceleyin.</p>
+    </div>
+    <section class="row g-3 mb-4" aria-label="Ajans özeti">
+      <div class="col-6 col-xl-3">
+        <div class="surface-card card shadow-sm h-100">
+          <div class="card-body p-3 p-md-4">
+            <div class="text-secondary">Toplam Hizmet</div>
+            <div class="h2 fw-bold mt-2 mb-0" data-count="services">—</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-6 col-xl-3">
+        <div class="surface-card card shadow-sm h-100">
+          <div class="card-body p-3 p-md-4">
+            <div class="text-secondary">Toplam Duyuru</div>
+            <div class="h2 fw-bold mt-2 mb-0" data-count="announcements">—</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-6 col-xl-3">
+        <div class="surface-card card shadow-sm h-100">
+          <div class="card-body p-3 p-md-4">
+            <div class="text-secondary">Aktif Hizmet</div>
+            <div class="h2 fw-bold mt-2 mb-0" data-count="active">—</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-6 col-xl-3">
+        <div class="surface-card card shadow-sm h-100">
+          <div class="card-body p-3 p-md-4">
+            <div class="text-secondary">Kurumsal Müşteri</div>
+            <div class="h2 fw-bold mt-2 mb-0" data-count="clients">—</div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <div class="row g-4">
+      <section class="col-xl-7" aria-labelledby="recent-title">
+        <div class="surface-card card shadow-sm h-100">
+          <div class="card-body p-3 p-md-4">
+            <h2 id="recent-title" class="h5">Son Duyurular</h2>
+            <ul class="list-group list-group-flush" data-recent></ul>
+            <a class="btn btn-outline-primary mt-3" href="duyurular.html">Duyuruları Yönet</a>
+          </div>
+        </div>
+      </section>
+      <section class="col-xl-5" aria-labelledby="quick-title">
+        <div class="surface-card card shadow-sm h-100">
+          <div class="card-body p-3 p-md-4">
+            <h2 id="quick-title" class="h5">Hızlı Erişim</h2>
+            <div class="list-group list-group-flush">
+              <a class="list-group-item list-group-item-action px-0" href="hizmetler.html">Hizmetleri Yönet</a>
+              <a class="list-group-item list-group-item-action px-0" href="birimler.html">Birimleri İncele</a>
+              <a class="list-group-item list-group-item-action px-0" href="istatistikler.html">İstatistikleri İncele</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+</body>
+</html>

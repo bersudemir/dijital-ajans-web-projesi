@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Birimler | NovaSoft Ajans Yönetimi</title>
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../assets/css/app.css">
+  <link rel="stylesheet" href="../assets/css/custom.css">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" defer></script>
+  <script type="module" src="../assets/js/app/pages/admin/departments-admin-page.js"></script>
+</head>
+<body class="agency-admin bg-light" data-admin-page="birimler">
+  <a class="agency-skip-link" href="#admin-main">İçeriğe geç</a>
+  <div data-admin-shell></div>
+  <main id="admin-main" class="agency-admin-main p-3 p-md-4" tabindex="-1">
+    <div class="mb-4">
+      <h1 class="h2 fw-bold">Birimler</h1>
+      <p class="text-secondary mb-0">Public sitedeki ekipleri inceleyin ve birim formunu deneyin.</p>
+    </div>
+    <p class="alert alert-info">Birim düzenleme prototipi. Formda yapılan değişiklikler public siteye uygulanmaz.</p>
+    <section class="surface-card card shadow-sm mb-4" aria-labelledby="list-title">
+      <div class="card-header bg-transparent d-flex flex-wrap align-items-center justify-content-between gap-2 p-3 p-md-4">
+        <h2 class="h5 mb-0" id="list-title">Mevcut birimler</h2>
+        <button class="btn btn-primary" type="button" data-add>Yeni Birim</button>
+      </div>
+      <div class="table-responsive">
+        <table class="table align-middle mb-0">
+          <thead class="table-light">
+            <tr><th scope="col">Birim</th><th scope="col">İşlemler</th></tr>
+          </thead>
+          <tbody data-records></tbody>
+        </table>
+      </div>
+    </section>
+    <p data-status role="status"></p>
+    <div class="modal fade" id="editor" tabindex="-1" aria-labelledby="editor-title" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-scrollable">
+        <form class="modal-content" data-editor>
+          <div class="modal-header">
+            <h2 class="modal-title h5" id="editor-title">Kayıt</h2>
+            <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Kapat"></button>
+          </div>
+          <div class="modal-body d-grid gap-3">
+            <div class="alert alert-danger mb-0" data-form-error role="alert" hidden></div>
+          <div>
+            <label for="title" class="form-label">Birim adı</label>
+            <input id="title" name="title" class="form-control" required maxlength="120">
+          </div>
+          <div>
+            <label for="description" class="form-label">Açıklama</label>
+            <textarea id="description" name="description" class="form-control" rows="4" required></textarea>
+          </div>
+          <div>
+            <label for="tasks" class="form-label">Görev alanları (her satıra bir görev)</label>
+            <textarea id="tasks" name="tasks" class="form-control" rows="4"></textarea>
+          </div>
+          <div>
+            <label for="skills" class="form-label">İlgili uzmanlıklar</label>
+            <textarea id="skills" name="skills" class="form-control" rows="3"></textarea>
+          </div>
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-outline-secondary" type="button" data-bs-dismiss="modal">Vazgeç</button>
+            <button class="btn btn-primary" type="submit">Formu Kontrol Et</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

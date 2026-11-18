@@ -1,31 +1,4 @@
-// Ajansın statik demo verileri. Proje dağılımı tüm yılları kapsar.
-const completedProjects = [
-  { label: '2022', value: 13 },
-  { label: '2023', value: 16 },
-  { label: '2024', value: 20 },
-  { label: '2025', value: 25 },
-  { label: '2026', value: 30 }
-];
-const serviceBreakdown = [
-  { label: 'Web Tasarım ve Geliştirme', value: 54, color: 'var(--bs-primary)' },
-  { label: 'Mobil Uygulama Geliştirme', value: 32, color: '#0f766e' },
-  { label: 'Kurumsal Yazılım Çözümleri', value: 38, color: '#9a3412' }
-];
-const satisfaction = [
-  { label: '2025 · 4. çeyrek', axisLabel: '2025 Ç4', value: 93 },
-  { label: '2026 · 1. çeyrek', axisLabel: '2026 Ç1', value: 95 },
-  { label: '2026 · 2. çeyrek', axisLabel: '2026 Ç2', value: 97 },
-  { label: '2026 · 3. çeyrek', axisLabel: '2026 Ç3', value: 99 }
-];
-
-const totalProjects = serviceBreakdown.reduce((total, item) => total + item.value, 0);
-const averageSatisfaction = satisfaction.reduce((total, item) => total + item.value, 0) / satisfaction.length;
-const metrics = {
-  projects: totalProjects,
-  clients: 68,
-  experience: 8,
-  satisfaction: `%${averageSatisfaction}`
-};
+import { completedProjects, serviceBreakdown, satisfaction, totalProjects, metrics } from '../core/statistics-data.js';
 
 // Bootstrap Admin / HTML charts.html örneğindeki viewBox, grid ve koordinat yaklaşımı.
 const plot = { width: 320, height: 210, left: 39, right: 10, top: 27, bottom: 34 };

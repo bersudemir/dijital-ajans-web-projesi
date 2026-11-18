@@ -10,5 +10,5 @@ if (root) {
         <h2 class="h5 mt-2">${escapeHtml(item.title)}</h2>
         <p class="text-secondary mb-0">${escapeHtml(item.content)}</p>
       </div>
-    </article>`).join('');
+    </article>`).join('') || '<p class="text-secondary">Şu anda yayında duyuru yok.</p>';
 }

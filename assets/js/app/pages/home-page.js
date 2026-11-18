@@ -6,6 +6,15 @@ function renderServices() {
   if (!container) return;
 
   const services = app.services.listPublicServices();
+  const carousel = container.closest('.carousel');
+  if (services.length < 2) {
+    carousel.removeAttribute('data-bs-ride');
+    carousel.querySelectorAll('[data-bs-slide]').forEach(button => { button.hidden = true; });
+  }
+  if (!services.length) {
+    container.innerHTML = '<p class="p-4 mb-0 text-secondary">Şu anda yayında hizmet yok.</p>';
+    return;
+  }
   container.innerHTML = services.map((service, index) => `
     <div class="carousel-item ${index === 0 ? 'active' : ''}">
       <div class="row align-items-center g-4 p-4 p-lg-5">
@@ -39,11 +48,11 @@ function renderAnnouncements() {
           <p class="text-secondary">${escapeHtml(item.summary)}</p>
           <button class="btn btn-outline-primary btn-sm" type="button"
             data-bs-toggle="modal" data-bs-target="#announcementModal"
-            data-announcement-id="${item.id}">Detay</button>
+            data-announcement-id="${escapeHtml(item.id)}">Detay</button>
         </div>
       </div>
     </article>
-  `).join('');
+  `).join('') || '<p class="text-secondary">Şu anda yayında duyuru yok.</p>';
 }
 
 function bindAnnouncementModal() {

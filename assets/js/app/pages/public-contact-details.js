@@ -11,7 +11,8 @@ for (const element of document.querySelectorAll('[data-contact-field]')) {
 }
 
 for (const element of document.querySelectorAll('[data-social-profile]')) {
-  const url = siteContact.social[element.dataset.socialProfile].trim();
+  const { label, url } = siteContact.social[element.dataset.socialProfile];
+  element.textContent = label;
   if (/^https:\/\//i.test(url)) {
     element.href = url;
     element.removeAttribute('aria-disabled');

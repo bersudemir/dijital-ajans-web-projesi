@@ -6,7 +6,7 @@ export const serviceSeed = [
     shortDescription: 'Modern, hızlı ve responsive kurumsal web çözümleri.',
     description: 'Marka kimliğine uygun, kullanıcı deneyimini ve performansı merkeze alan web projeleri geliştiriyoruz.',
     price: 15000,
-    image: 'assets/images/services/web-development.jpg',
+    image: 'assets/images/services/web-development.svg',
     features: ['Responsive tasarım', 'SEO uyumlu yapı', 'Performans optimizasyonu'],
     active: true
   },
@@ -17,7 +17,7 @@ export const serviceSeed = [
     shortDescription: 'İş süreçlerine uygun mobil uygulama çözümleri.',
     description: 'Kullanıcı odaklı arayüz ve sürdürülebilir yazılım mimarisi ile mobil çözümler tasarlıyoruz.',
     price: 30000,
-    image: 'assets/images/services/mobile-app.jpg',
+    image: 'assets/images/services/mobile-app.svg',
     features: ['UI/UX tasarımı', 'API entegrasyonu', 'Test ve yayın desteği'],
     active: true
   },
@@ -28,7 +28,7 @@ export const serviceSeed = [
     shortDescription: 'İş süreçlerini dijitalleştiren özel yazılım çözümleri.',
     description: 'Kurumun ihtiyacına göre ölçeklenebilir yönetim ve otomasyon yazılımları geliştiriyoruz.',
     price: 45000,
-    image: 'assets/images/services/enterprise-software.jpg',
+    image: 'assets/images/services/enterprise-software.svg',
     features: ['İhtiyaç analizi', 'Modüler mimari', 'Raporlama ve dashboard'],
     active: true
   }

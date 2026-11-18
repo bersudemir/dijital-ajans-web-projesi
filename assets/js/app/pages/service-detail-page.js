@@ -1,6 +1,12 @@
 import { app } from '../core/bootstrap-app.js';
 import { escapeHtml } from '../core/formatters.js';
 
+const imageDescriptions = {
+  'web-development.svg': 'Web tarayıcısında kod simgesi ve içerik kartları',
+  'mobile-app.svg': 'Akıllı telefon ekranında uygulama arayüzü ve yan paneller',
+  'enterprise-software.svg': 'Merkezî yazılıma bağlı belge, rapor ve görev modülleri'
+};
+
 const params = new URLSearchParams(window.location.search);
 const slug = params.get('slug');
 const service = app.services.getDetail(slug);
@@ -16,9 +22,12 @@ if (!root) {
     </div>`;
 } else {
   const money = new Intl.NumberFormat('tr-TR', { style: 'currency', currency: 'TRY', maximumFractionDigits: 0 }).format(service.price);
+  // Existing records can still contain the legacy seed paths.
+  const image = service.image.replace(/^(assets\/images\/services\/(?:web-development|mobile-app|enterprise-software))\.jpg$/, '$1.svg');
+  const imageAlt = imageDescriptions[image.split('/').pop()] ?? `${service.title} hizmet görseli`;
   root.innerHTML = `
     <nav aria-label="Sayfa yolu"><ol class="breadcrumb small"><li class="breadcrumb-item"><a href="index.html">Ana Sayfa</a></li><li class="breadcrumb-item"><a href="hizmetler.html">Hizmetler</a></li><li class="breadcrumb-item active" aria-current="page">${escapeHtml(service.title)}</li></ol></nav>
-    <div class="row g-5 align-items-start">
+    <div class="row gx-3 gy-4 g-lg-5 align-items-start">
       <div class="col-lg-7">
         <span class="badge text-bg-primary mb-3">Hizmet Detayı</span>
         <h1 class="display-5 fw-bold">${escapeHtml(service.title)}</h1>
@@ -29,6 +38,8 @@ if (!root) {
         </ul>
       </div>
       <aside class="col-lg-5">
+        ${image ? `<img class="agency-service-image img-fluid rounded-4 border mb-4" src="${escapeHtml(image)}"
+          width="640" height="360" alt="${escapeHtml(imageAlt)}">` : ''}
         <div class="card shadow-sm">
           <div class="card-body p-4">
             <p class="text-secondary mb-1">Başlangıç ücreti</p>

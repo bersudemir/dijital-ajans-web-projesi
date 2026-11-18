@@ -23,6 +23,7 @@ document.querySelector('[data-admin-shell]').innerHTML = `
         ${link('hizmetler', 'Hizmetler')}
         ${link('duyurular', 'Duyurular')}
         ${link('birimler', 'Birimler')}
+        ${link('sayfa-icerikleri', 'Sayfa İçerikleri')}
         <p class="small text-secondary fw-semibold mt-3 mb-1 px-3">Raporlama</p>
         ${link('istatistikler', 'İstatistikler')}
         <p class="small text-secondary fw-semibold mt-3 mb-1 px-3">Site</p>

@@ -63,6 +63,10 @@ html {
   max-width: 52rem;
 }
 
+.agency-chart-donut {
+  width: min(100%, 11rem);
+}
+
 .agency-step {
   display: inline-flex;
   align-items: center;

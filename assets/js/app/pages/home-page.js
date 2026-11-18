@@ -1,21 +1,5 @@
 import { app } from '../core/bootstrap-app.js';
-
-function escapeHtml(value = '') {
-  return String(value)
-    .replaceAll('&', '&amp;')
-    .replaceAll('<', '&lt;')
-    .replaceAll('>', '&gt;')
-    .replaceAll('"', '&quot;')
-    .replaceAll("'", '&#039;');
-}
-
-function formatCurrency(value) {
-  return new Intl.NumberFormat('tr-TR', {
-    style: 'currency',
-    currency: 'TRY',
-    maximumFractionDigits: 0
-  }).format(value);
-}
+import { escapeHtml, formatCurrency } from '../core/formatters.js';
 
 function renderServices() {
   const container = document.querySelector('[data-services]');

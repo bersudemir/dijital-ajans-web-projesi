@@ -3,15 +3,67 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Hizmet Detayı | Dijital Ajans</title>
+  <title>Hizmet Detayı | NovaSoft Ajans</title>
+  <meta name="description" content="NovaSoft Ajans hizmet kapsamı, özellikleri ve teklif bilgileri.">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="assets/css/app.css">
   <link rel="stylesheet" href="assets/css/custom.css">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" defer></script>
 </head>
 <body>
-  <header class="border-bottom"><div class="container py-3 d-flex justify-content-between align-items-center"><a class="fw-bold text-decoration-none" href="index.html">NovaSoft Ajans</a><a class="btn btn-outline-primary btn-sm" href="hizmetler.html">Tüm Hizmetler</a></div></header>
-  <main class="container agency-section" data-service-detail></main>
-  <footer class="border-top py-4"><div class="container small text-secondary">© 2026 NovaSoft Ajans</div></footer>
+  <a class="agency-skip-link" href="#main-content">İçeriğe geç</a>
+  <header class="border-bottom bg-white sticky-top">
+    <nav class="navbar navbar-expand-xl container py-3" aria-label="Ana menü">
+      <a class="navbar-brand fw-bold" href="index.html">NovaSoft Ajans</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Menüyü aç/kapat">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="mainNav">
+        <ul class="navbar-nav ms-auto align-items-xl-center gap-xl-1">
+          <li class="nav-item"><a class="nav-link" href="hakkimizda.html">Hakkımızda</a></li>
+          <li class="nav-item"><a class="nav-link" href="misyon-vizyon.html">Misyon & Vizyon</a></li>
+          <li class="nav-item dropdown">
+            <button class="nav-link dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Hizmetlerimiz</button>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="hizmetler.html">Tüm Hizmetler</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="hizmet-detay.html?slug=web-tasarim-gelistirme">Web Tasarım</a></li>
+              <li><a class="dropdown-item" href="hizmet-detay.html?slug=mobil-uygulama">Mobil Uygulama</a></li>
+              <li><a class="dropdown-item" href="hizmet-detay.html?slug=kurumsal-yazilim">Kurumsal Yazılım</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <button class="nav-link dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Birimlerimiz</button>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="birimler.html">Tüm Birimler</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="birimler.html#yazilim">Yazılım Geliştirme</a></li>
+              <li><a class="dropdown-item" href="birimler.html#tasarim">UI/UX Tasarım</a></li>
+              <li><a class="dropdown-item" href="birimler.html#pazarlama">Dijital Pazarlama</a></li>
+            </ul>
+          </li>
+          <li class="nav-item"><a class="nav-link" href="duyurular.html">Duyurular</a></li>
+          <li class="nav-item"><a class="btn btn-primary ms-xl-2" href="iletisim.html">İletişim</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+  <main id="main-content" tabindex="-1" class="container agency-section" data-service-detail></main>
+  <footer class="border-top py-5 bg-dark text-white">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-lg-5">
+          <h2 class="h4">NovaSoft Ajans</h2>
+          <p class="text-white-50">Web, mobil ve kurumsal yazılım çözümleri geliştiren örnek dijital ajans projesidir.</p>
+        </div>
+        <div class="col-6 col-lg-2"><h3 class="h6">Kurumsal</h3><a class="d-block text-white-50 agency-footer-link" href="hakkimizda.html">Hakkımızda</a><a class="d-block text-white-50 agency-footer-link" href="misyon-vizyon.html">Misyon & Vizyon</a></div>
+        <div class="col-6 col-lg-2"><h3 class="h6">Hızlı Erişim</h3><a class="d-block text-white-50 agency-footer-link" href="hizmetler.html">Hizmetler</a><a class="d-block text-white-50 agency-footer-link" href="duyurular.html">Duyurular</a><a class="d-block text-white-50 agency-footer-link" href="birimler.html">Birimler</a><a class="d-block text-white-50 agency-footer-link" href="iletisim.html">İletişim</a></div>
+        <div class="col-lg-3"><h3 class="h6">İletişim</h3><p class="text-white-50 mb-1">İstanbul, Türkiye</p><p class="text-white-50 mb-1"><a class="text-white-50 agency-footer-link" href="tel:+905550000000">+90 555 000 00 00</a></p><p class="text-white-50"><a class="text-white-50 agency-footer-link" href="mailto:info@novasoft.example">info@novasoft.example</a></p><a class="text-white-50 agency-footer-link small" href="iletisim.html#sosyal-medya">Sosyal medya</a></div>
+      </div>
+      <hr class="border-secondary my-4">
+      <p class="small text-white-50 mb-0">© 2026 NovaSoft Ajans · Tasarımcı bilgisi final sürümde eklenecektir.</p>
+    </div>
+  </footer>
   <script type="module" src="assets/js/app/pages/service-detail-page.js"></script>
 </body>
 </html>

@@ -18,6 +18,7 @@ function renderServices() {
   }
   container.innerHTML = services.map((service, index) => {
     const image = resolveServiceImage(service);
+    const detailUrl = `hizmet-detay.html?slug=${encodeURIComponent(service.slug)}`;
     return `
     <div class="carousel-item ${index === 0 ? 'active' : ''}">
       <div class="row align-items-center g-4 p-4 p-lg-5">
@@ -26,13 +27,14 @@ function renderServices() {
           <h2>${escapeHtml(service.title)}</h2>
           <p class="text-secondary">${escapeHtml(service.shortDescription)}</p>
           <p class="fw-semibold">Başlangıç: ${formatCurrency(service.price)}</p>
-          <a class="btn btn-primary" href="hizmet-detay.html?slug=${encodeURIComponent(service.slug)}">Detayı İncele</a>
+          <a class="btn btn-primary" href="${detailUrl}">Detayı İncele</a>
         </div>
         <div class="col-lg-6">
-          <div class="ratio ratio-16x9 rounded-4 overflow-hidden bg-light d-flex align-items-center justify-content-center">
+          <a class="ratio ratio-16x9 rounded-4 overflow-hidden bg-light d-flex align-items-center justify-content-center"
+            href="${detailUrl}" aria-label="${escapeHtml(service.title)} hizmetinin detayını incele">
             <img class="agency-service-image" src="${escapeHtml(image.path)}"
               width="640" height="360" alt="${escapeHtml(image.alt)}">
-          </div>
+          </a>
         </div>
       </div>
     </div>

@@ -1,5 +1,5 @@
 import { app } from '../core/bootstrap-app.js';
-import { escapeHtml } from '../core/formatters.js';
+import { escapeHtml, formatCurrency } from '../core/formatters.js';
 import { resolveServiceImage } from '../core/service-images.js';
 
 const params = new URLSearchParams(window.location.search);
@@ -16,7 +16,7 @@ if (!root) {
       İstenen hizmet bulunamadı. <a href="hizmetler.html" class="alert-link">Tüm hizmetlere dön.</a>
     </div>`;
 } else {
-  const money = new Intl.NumberFormat('tr-TR', { style: 'currency', currency: 'TRY', maximumFractionDigits: 0 }).format(service.price);
+  const money = formatCurrency(service.price);
   const image = resolveServiceImage(service);
   root.innerHTML = `
     <nav aria-label="Sayfa yolu"><ol class="breadcrumb small"><li class="breadcrumb-item"><a href="index.html">Ana Sayfa</a></li><li class="breadcrumb-item"><a href="hizmetler.html">Hizmetler</a></li><li class="breadcrumb-item active" aria-current="page">${escapeHtml(service.title)}</li></ol></nav>

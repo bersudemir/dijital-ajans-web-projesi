@@ -24,10 +24,6 @@ export class LocalStorageAdapter {
     localStorage.setItem(this.#key(name), JSON.stringify(value));
   }
 
-  remove(name) {
-    localStorage.removeItem(this.#key(name));
-  }
-
   has(name) {
     return localStorage.getItem(this.#key(name)) !== null;
   }

@@ -14,9 +14,5 @@ announcementRepository.seed(announcementSeed);
 
 export const app = Object.freeze({
   services: new ServiceService(serviceRepository),
-  announcements: new AnnouncementService(announcementRepository),
-  repositories: Object.freeze({
-    services: serviceRepository,
-    announcements: announcementRepository
-  })
+  announcements: new AnnouncementService(announcementRepository)
 });

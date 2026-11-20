@@ -1,5 +1,6 @@
 import { app } from '../core/bootstrap-app.js';
 import { escapeHtml, formatCurrency } from '../core/formatters.js';
+import { resolveServiceImage } from '../core/service-images.js';
 
 function renderServices() {
   const container = document.querySelector('[data-services]');
@@ -15,7 +16,9 @@ function renderServices() {
     container.innerHTML = '<p class="p-4 mb-0 text-secondary">Şu anda yayında hizmet yok.</p>';
     return;
   }
-  container.innerHTML = services.map((service, index) => `
+  container.innerHTML = services.map((service, index) => {
+    const image = resolveServiceImage(service);
+    return `
     <div class="carousel-item ${index === 0 ? 'active' : ''}">
       <div class="row align-items-center g-4 p-4 p-lg-5">
         <div class="col-lg-6">
@@ -27,12 +30,14 @@ function renderServices() {
         </div>
         <div class="col-lg-6">
           <div class="ratio ratio-16x9 rounded-4 overflow-hidden bg-light d-flex align-items-center justify-content-center">
-            <div class="p-5 text-center text-secondary">${escapeHtml(service.title)} görseli</div>
+            <img class="agency-service-image" src="${escapeHtml(image.path)}"
+              width="640" height="360" alt="${escapeHtml(image.alt)}">
           </div>
         </div>
       </div>
     </div>
-  `).join('');
+  `;
+  }).join('');
 }
 
 function renderAnnouncements() {

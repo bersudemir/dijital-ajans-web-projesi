@@ -1,4 +1,5 @@
 import { Service } from '../models/service.js';
+import { resolveServiceImage } from '../core/service-images.js';
 
 export class ServiceService {
   constructor(repository) {
@@ -19,7 +20,7 @@ export class ServiceService {
     return this.repository.getAll();
   }
 
-  save({ id, title, slug, shortDescription, description, price, features, active }) {
+  save({ id, title, slug, shortDescription, description, price, features, active, image }) {
     const previous = id ? this.repository.getById(id) : null;
     if (id && !previous) throw new Error('Bu hizmet artık mevcut değil.');
 
@@ -38,7 +39,7 @@ export class ServiceService {
       id: previous?.id ?? crypto.getRandomValues(new Uint32Array(4)).join('-'),
       title, slug, description, price, features, active,
       shortDescription: shortDescription.trim() || description.slice(0, 160),
-      image: previous?.image
+      image: resolveServiceImage({ image: image ?? previous?.image, slug }).path
     }));
   }
 

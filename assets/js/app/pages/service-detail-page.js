@@ -45,7 +45,7 @@ if (!root) {
             <p class="text-secondary mb-1">Başlangıç ücreti</p>
             <p class="display-6 fw-bold">${money}</p>
             <p class="small text-secondary">Fiyat örnek proje içeriğidir; gerçek teklif proje kapsamına göre belirlenir.</p>
-            <a class="btn btn-primary w-100" href="iletisim.html">Teklif / Görüşme Talebi</a>
+            <a class="btn btn-primary w-100" href="iletisim.html">İletişime Geç</a>
           </div>
         </div>
       </aside>

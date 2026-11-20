@@ -1,6 +1,6 @@
 // Adres Google Maps sorgusunda da kullanılır. URL'si boş profiller metin olarak gösterilir.
 export const siteContact = {
-  address: 'İzmit / Kocaeli',
+  address: 'Kocaeli Üniversitesi, Umuttepe Yerleşkesi, 41001 İzmit/Kocaeli, Türkiye.',
   phone: '+90 216 555 01 24',
   email: 'info@novasoftajans.com',
   designer: 'Bersu Demir',

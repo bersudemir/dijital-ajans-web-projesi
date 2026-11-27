@@ -23,11 +23,11 @@ Web sitesinde aşağıdaki bölümler bulunmaktadır:
 - **Birimler:** Ajansın çalışma birimleri ve görevleri.
 - **Duyurular:** Güncel duyuruların listelendiği sayfa.
 - **Sayılarla Ajans:** Ajansa ait istatistikler ve grafikler.
-- **İletişim:** İletişim bilgileri, harita ve şikâyet/öneri formu.
+- **İletişim:** İletişim bilgileri, harita ve ayrı teklif talebi ile şikâyet/öneri formları. Hizmet detayından açılan teklif formu ilgili hizmeti seçer ve e-posta uygulamasında açılabilen bir taslak hazırlar. Site üzerinden e-posta gönderilmez.
 
 ## Yönetici Paneli
 
-Yönetici paneline `admin/index.html` dosyasından ulaşılabilir.
+Yönetici girişi `admin/giris.html` sayfasından yapılır. Demo kullanıcı adı `admin`, şifre `123` olarak gösterilir. Başarılı giriş yönetim panelini açar. Demo giriş gerçek erişim koruması sağlamaz.
 
 Panel üzerinden hizmet ve duyuru kayıtları eklenebilir, düzenlenebilir ve silinebilir. Hizmetler için görsel seçimi de yapılabilir.
 
@@ -38,7 +38,7 @@ Hizmet ve duyuru kayıtları tarayıcının **LocalStorage** alanında saklanmak
 Proje dosyaları Visual Studio Code ile açılabilir. `index.html` dosyası, Live Server gibi bir yerel web sunucusu kullanılarak çalıştırılabilir.
 
 - **Ana sayfa:** `index.html`
-- **Yönetici paneli:** `admin/index.html`
+- **Yönetici girişi:** `admin/giris.html`
 
 Proje HTML, CSS ve JavaScript ile hazırlandığı için veritabanı veya sunucu tarafında çalışan bir uygulama gerektirmez.
 

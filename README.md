@@ -1,49 +1,132 @@
 # NovaSoft Ajans
 
-NovaSoft Ajans, Web Tasarımı dersi kapsamında hazırladığım dijital ajans web sitesi projesidir. Projede bir yazılım ve dijital hizmet ajansının tanıtım sitesi ile yönetici paneli tasarlanmıştır.
+## Proje Hakkında
 
-Web sitesi responsive olarak hazırlanmıştır. Böylece bilgisayar, tablet ve telefon ekranlarında kullanılabilir.
+NovaSoft Ajans, Web Tasarımı dersi kapsamında geliştirilen bir dijital ajans sitesidir. Ziyaretçiler ajansın hizmetlerini ve duyurularını inceleyebilir, istatistikleri görebilir ve iletişim formlarından e-posta taslağı hazırlayabilir. Ayrı yönetim paneli, hizmet ve duyuru kayıtlarının tarayıcı üzerinden düzenlenmesini sağlar.
+
+![NovaSoft Ajans ana sayfası: lacivert giriş bölümü, dijital ürün illüstrasyonu ve dört istatistik kartı](docs/screenshots/ana-sayfa.png)
+
+## Canlı Demo
+
+- [Canlı site](https://bersudemir.github.io/dijital-ajans-web-projesi/)
+- [Yönetici girişi](https://bersudemir.github.io/dijital-ajans-web-projesi/admin/giris.html)
+- [GitHub deposu](https://github.com/bersudemir/dijital-ajans-web-projesi)
 
 ## Kullanılan Teknolojiler
 
-- HTML5
-- CSS3
-- Bootstrap 5
-- JavaScript
-- LocalStorage
+| Teknoloji | Projedeki kullanımı |
+| --- | --- |
+| HTML5 ve CSS3 | Sayfa yapısı, duyarlı yerleşim ve görsel düzen |
+| Bootstrap 5 | Izgara, mobil menü, hizmet slider’ı, modallar ve form bileşenleri |
+| JavaScript ES modülleri | Sayfa etkileşimleri, form doğrulama, veri okuma ve yönetim işlemleri |
+| Yerel SVG | Ajans ve hizmet illüstrasyonları ile tarayıcıda çizilen grafikler |
+| LocalStorage ve SessionStorage | Hizmet ve duyuru kayıtları ile sekmeye ait demo oturum işareti |
 
-## Web Sitesi
+## Hazır Şablon ve Özelleştirmeler
 
-Web sitesinde aşağıdaki bölümler bulunmaktadır:
+[Bootstrap Admin / HTML](https://github.com/danilo62x/bootstrap-admin-html) şablonunun bileşenleri ve yönetim paneli yerleşimi kullanıldı. Şablonun `assets/css/app.css` dosyası korundu. Ajansa özgü lacivert giriş ve çağrı bölümleri, kart stilleri ve erişilebilirlik ayarları `assets/css/custom.css` dosyasında yer alır. Ana sayfa illüstrasyonu ve hizmet görselleri depodaki SVG dosyalarından yüklenir.
 
-- **Ana Sayfa:** Ajans tanıtımı, otomatik geçişli hizmet slider'ı ve güncel duyurular.
-- **Hakkımızda:** Ajans hakkında bilgiler ve çalışma yaklaşımı.
-- **Misyon ve Vizyon:** Ajansın hedefleri ve temel değerleri.
-- **Hizmetler:** Sunulan hizmetler, açıklamaları, görselleri ve fiyat bilgileri.
-- **Birimler:** Ajansın çalışma birimleri ve görevleri.
-- **Duyurular:** Güncel duyuruların listelendiği sayfa.
-- **Sayılarla Ajans:** Ajansa ait istatistikler ve grafikler.
-- **İletişim:** İletişim bilgileri, harita ve ayrı teklif talebi ile şikâyet/öneri formları. Hizmet detayından açılan teklif formu ilgili hizmeti seçer ve e-posta uygulamasında açılabilen bir taslak hazırlar. Site üzerinden e-posta gönderilmez.
+## Site Sayfaları ve Özellikler
 
-## Yönetici Paneli
+| Sayfa | İçerik |
+| --- | --- |
+| [Ana Sayfa](index.html) | Ajans tanıtımı, dört gösterge, 5 saniyede ilerleyen hizmet slider’ı ve modalda açılan duyurular |
+| [Hakkımızda](hakkimizda.html) ve [Misyon & Vizyon](misyon-vizyon.html) | Ajansın çalışma yaklaşımı, hedefleri ve değerleri |
+| [Hizmetler](hizmetler.html) ve [Hizmet Detayı](hizmet-detay.html?slug=web-tasarim-gelistirme) | Aktif hizmetler, kapsam, görsel, başlangıç ücreti ve teklif bağlantısı |
+| [Birimler](birimler.html) | Yazılım geliştirme, UI/UX tasarım ve dijital pazarlama ekipleri |
+| [Duyurular](duyurular.html) | Yayındaki duyuruların yeniden eskiye sıralanmış listesi |
+| [Sayılarla Ajans](sayilarla-ajans.html) | Yıllık proje sayıları, hizmet dağılımı ve müşteri memnuniyetini gösteren SVG grafikler |
+| [İletişim](iletisim.html) | İletişim bilgileri, harita ve birbirinden bağımsız iki form |
 
-Yönetici girişi `admin/giris.html` sayfasından yapılır. Demo kullanıcı adı `admin`, şifre `123` olarak gösterilir. Başarılı giriş yönetim panelini açar. Demo giriş gerçek erişim koruması sağlamaz.
+**Teklif talebi** hizmet detayından açıldığında ilgili aktif hizmeti otomatik seçer. Form bir e-posta taslağı hazırlar ve kullanıcının e-posta uygulamasında açmasına olanak verir. **Şikâyet ve öneri** formu kendi taslağını sayfa içinde önizler. İki form da doğrudan e-posta göndermez ve form verisini saklamaz.
 
-Panel üzerinden hizmet ve duyuru kayıtları eklenebilir, düzenlenebilir ve silinebilir. Hizmetler için görsel seçimi de yapılabilir.
+## Yönetim Paneli
 
-Hizmet ve duyuru kayıtları tarayıcının **LocalStorage** alanında saklanmaktadır. Diğer yönetim ekranlarında içerik ve form tasarımları bulunmaktadır.
+- **Giriş sayfası** [`admin/giris.html`](admin/giris.html)
+- **Demo kullanıcı adı** `admin`
+- **Demo şifre** `123`
 
-## Projeyi Çalıştırma
+Demo bilgileri JavaScript kodunda görülebilir. Bu giriş gerçek kimlik doğrulama veya güvenlik sağlamaz. Uygulama giriş bilgilerini saklamaz ve `sessionStorage` alanında yalnızca sekmeye ait oturum işaretini tutar.
 
-Proje dosyaları Visual Studio Code ile açılabilir. `index.html` dosyası, Live Server gibi bir yerel web sunucusu kullanılarak çalıştırılabilir.
+Panelde hizmet ve duyuru kayıtları eklenebilir, düzenlenebilir ve silinebilir. Hizmetlerde yerel SVG seçilebilir. Duyuru ekleri için sadece dosya bilgileri tutulur. Yalnızca hizmet ve duyuru kayıtları `localStorage` alanında saklanır. Birimler, Sayfa İçerikleri ve İstatistikler ekranları düzenleme prototipidir ve değişiklikleri kaydetmez.
 
-- **Ana sayfa:** `index.html`
-- **Yönetici girişi:** `admin/giris.html`
+## Kurulum ve Çalıştırma
 
-Proje HTML, CSS ve JavaScript ile hazırlandığı için veritabanı veya sunucu tarafında çalışan bir uygulama gerektirmez.
+Projeyi klonlayın ve yerel bir HTTP sunucusuyla açın. Örneğin, Python 3 kuruluysa şu komutları kullanabilirsiniz:
 
-## Kullanılan Hazır Şablon
+```bash
+git clone https://github.com/bersudemir/dijital-ajans-web-projesi.git
+cd dijital-ajans-web-projesi
+python -m http.server 8000
+```
 
-Projede [Bootstrap Admin / HTML](https://github.com/danilo62x/bootstrap-admin-html) açık kaynak şablonu kullanılmış ve dijital ajans temasına uygun olarak düzenlenmiştir.
+[http://localhost:8000/](http://localhost:8000/) adresi ana sayfayı, [http://localhost:8000/admin/giris.html](http://localhost:8000/admin/giris.html) yönetici girişini açar. VS Code Live Server da kullanılabilir. JavaScript modüllerinin yüklenmesi için dosyaları doğrudan açmak yerine HTTP üzerinden çalıştırın.
 
-Şablonun MIT lisans bilgileri `LICENSE` dosyasında bulunmaktadır.
+```text
+dijital-ajans-web-projesi/
+├── *.html                  Ziyaretçi sayfaları
+├── admin/                  Demo giriş ve yönetim ekranları
+├── assets/
+│   ├── css/                 Şablon ve projeye özel stiller
+│   ├── images/              Yerel SVG illüstrasyonlar
+│   └── js/app/
+│       ├── core/            Başlangıç verileri, kurulum ve depolama bağdaştırıcısı
+│       ├── models/          Hizmet ve duyuru veri modelleri
+│       ├── pages/           Ziyaretçi ve yönetim ekranı modülleri
+│       ├── repositories/    Kayıt okuma ve yazma
+│       └── services/        Hizmet ve duyuru kuralları
+├── docs/screenshots/        Gerçek site ekran görüntüsü
+└── LICENSE                  Şablonun MIT lisansı
+```
+
+## Kullanıcı Akış Diyagramı
+
+```mermaid
+flowchart TD
+    Visitor["Ziyaretçi"] --> Home["Ana sayfa ve menü"]
+    Home --> Services["Hizmet listesi veya slider"]
+    Services --> Detail["Hizmet detayı"]
+    Detail --> Quote["Teklif formu: hizmet otomatik seçilir"]
+    Quote --> Draft["E-posta taslağı"]
+    Draft --> MailApp["İsteğe bağlı: e-posta uygulamasında aç"]
+    Home --> Contact["İletişim sayfası"]
+    Contact --> Feedback["Şikâyet ve öneri formu"]
+    Feedback --> Preview["Sayfada taslak önizlemesi"]
+    Home --> Content["Duyurular ve istatistikler"]
+
+    Admin["Yönetici"] --> Login["Demo giriş"]
+    Login --> Valid{"Demo bilgileri doğru mu?"}
+    Valid -->|Evet| Dashboard["Yönetim paneli"]
+    Valid -->|Hayır| Error["Hata mesajı"]
+    Error --> Login
+    Dashboard --> Manage["Hizmet ve duyuru kayıtlarını yönet"]
+    Dashboard --> Logout["Çıkış yap"]
+    Logout --> Login
+```
+
+## Sistem Mimarisi ve Veri Akış Diyagramı
+
+Sayfa modülleri hizmet ve duyuru verilerine ilgili servis üzerinden ulaşır. Servisler, kayıtları repository katmanına iletir. Repository katmanı tarayıcı depolamasına `LocalStorageAdapter` ile erişir. `bootstrap-app.js` bu modülleri birleştirir ve koleksiyon anahtarları henüz yoksa başlangıç verilerini ekler.
+
+```mermaid
+flowchart LR
+    ServicePages["Hizmet sayfaları ve services-admin-page.js"] --> ServiceService["ServiceService"]
+    AnnouncementPages["Duyuru sayfaları ve announcements-admin-page.js"] --> AnnouncementService["AnnouncementService"]
+    ServiceService --> ServiceRepository["ServiceRepository"]
+    AnnouncementService --> AnnouncementRepository["AnnouncementRepository"]
+    ServiceRepository --> BaseRepository["BaseRepository"]
+    AnnouncementRepository --> BaseRepository
+    BaseRepository --> Adapter["LocalStorageAdapter"]
+    Adapter --> Storage[("Tarayıcı LocalStorage")]
+```
+
+## Projenin Sınırlılıkları
+
+- Hizmet ve duyuru kayıtları tarayıcıya ve site adresine özeldir. Farklı cihazlar veya tarayıcı profilleri arasında eşitlenmez.
+- Demo oturumu istemci tarafında çalışır. Projede sunucu tarafı kimlik doğrulama ve veritabanı bulunmaz.
+- Formlar yalnızca taslak hazırlar. Duyuru eklerinin içeriği yüklenmez.
+- Bootstrap JavaScript paketi ve harita gibi dış kaynakların yüklenmesi internet bağlantısına bağlıdır.
+
+## Lisans
+
+Kullanılan [Bootstrap Admin / HTML şablonu](https://github.com/danilo62x/bootstrap-admin-html) MIT lisanslıdır. Orijinal lisans ve telif bildirimi [`LICENSE`](LICENSE) dosyasında yer alır.

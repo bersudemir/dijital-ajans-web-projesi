@@ -1,6 +1,11 @@
 /* Projeye özel stiller. Orijinal app.css dosyasından SONRA yüklenmelidir. */
 :root {
   --agency-accent: #465fff;
+  --agency-navy: #101a33;
+  --agency-paper: #f8f8f5;
+  --agency-mint: #a0ebdf;
+  --agency-card-border: #e0e5ee;
+  --agency-card-shadow: 0 .5rem 1.5rem rgb(16 26 51 / .07);
   --agency-section-space: 5rem;
 }
 
@@ -8,20 +13,79 @@ body {
   scroll-behavior: smooth;
 }
 
+.agency-soft-section {
+  background: linear-gradient(135deg, var(--agency-paper), #f1f4fa);
+}
+
 .agency-page-header {
   padding: 4.5rem 0 3rem;
+  background-image: linear-gradient(115deg, var(--agency-paper) 12%, #f2f4fa 68%, #e9eefb);
+}
+
+.agency-page-header h1 {
+  color: var(--agency-navy);
+}
+
+.agency-page-header .text-primary {
+  --bs-primary-rgb: 51, 72, 196;
 }
 
 .agency-section {
   padding: var(--agency-section-space) 0;
 }
 
-.agency-home-hero {
-  background: linear-gradient(125deg, #f8faff 0%, #edf2ff 60%, #e7edff 100%);
+.agency-home-hero,
+.agency-home-callout {
+  color: #fff;
+  --bs-heading-color: #fff;
+  background: radial-gradient(ellipse at top right, #243865 0%, transparent 58%), var(--agency-navy);
+}
+
+.agency-home-hero h1,
+.agency-home-callout h2 {
+  color: #fff;
+  text-wrap: balance;
+}
+
+.agency-home-hero :focus-visible,
+.agency-home-callout :focus-visible {
+  outline-color: var(--agency-mint);
+}
+
+.agency-dark-label {
+  display: inline-flex;
+  align-items: center;
+  gap: .625rem;
+  color: var(--agency-mint);
+  font-size: .875rem;
+  font-weight: 600;
+  letter-spacing: .04em;
+}
+
+.agency-dark-label::before {
+  content: "";
+  width: 1.375rem;
+  height: 2px;
+  flex: 0 0 1.375rem;
+  background: currentColor;
+}
+
+.agency-callout-section {
+  background: var(--agency-paper);
+}
+
+.agency-home-callout {
+  border: 1px solid #34456d;
+  box-shadow: 0 1rem 2rem rgb(16 26 51 / .13);
 }
 
 .agency-hero-copy {
   color: #4a5570;
+}
+
+.agency-home-hero .agency-hero-copy,
+.agency-home-callout .agency-hero-copy {
+  color: #d4ddef;
 }
 
 .agency-hero-art {
@@ -30,7 +94,8 @@ body {
   max-width: 40rem;
   margin-inline: auto;
   border-radius: 1.5rem;
-  box-shadow: 0 1.125rem 2.5rem rgb(36 63 147 / .18);
+  border: 1px solid #6174a9;
+  box-shadow: 0 1.125rem 2.5rem rgb(5 10 25 / .35);
 }
 
 .agency-metrics {
@@ -40,37 +105,48 @@ body {
 }
 
 .agency-metric {
-  border: 1px solid #dbe4fa;
-  background: rgb(255 255 255 / .88);
-  box-shadow: 0 .375rem 1rem rgb(41 62 127 / .06);
+  border: 1px solid #526181;
+  background: #1d2a46;
 }
 
 .agency-metric dt {
-  color: #4a5570;
+  color: #d4ddef;
 }
 
-.agency-metric dd,
+.agency-metric dd {
+  color: #fff;
+}
+
 .agency-section-label {
   color: #3348c4;
 }
 
-.agency-soft-section {
-  background: linear-gradient(135deg, #f7f9ff, #edf2ff);
-}
-
+.agency-card,
 .agency-process-card,
-.agency-service-card {
-  border-color: #dbe4fa;
-  box-shadow: 0 .5rem 1.375rem rgb(41 62 127 / .08);
+.agency-department,
+[data-all-announcements] .card,
+[data-service-detail] aside .card {
+  border-color: var(--agency-card-border);
+  box-shadow: var(--agency-card-shadow);
 }
 
 .agency-step.agency-process-icon {
-  background: #e8eeff;
-  color: #3348c4;
+  background: #dff3ef;
+  color: #176358;
+}
+
+.agency-service-card {
+  --bs-card-border-radius: 1.125rem;
+  --bs-card-inner-border-radius: calc(1.125rem - 1px);
 }
 
 .agency-service-card .agency-service-image {
   height: auto;
+  border-bottom: 1px solid var(--agency-card-border);
+}
+
+.agency-service-card .card-body > div:last-child {
+  border-top: 1px solid var(--agency-card-border);
 }
 
 @media (min-width: 768px) {

@@ -11,6 +11,7 @@
 
 body {
   scroll-behavior: smooth;
+  font-family: Outfit, system-ui, sans-serif;
 }
 
 .agency-soft-section {
@@ -18,16 +19,32 @@ body {
 }
 
 .agency-page-header {
+  --bs-heading-color: #fff;
+  --bs-secondary-rgb: 212, 221, 239;
+  --bs-primary-rgb: 160, 235, 223;
   padding: 4.5rem 0 3rem;
-  background-image: linear-gradient(115deg, var(--agency-paper) 12%, #f2f4fa 68%, #e9eefb);
+  color: #d4ddef;
+  background-image: radial-gradient(ellipse at top right, #243865, transparent 65%), linear-gradient(var(--agency-navy), var(--agency-navy));
 }
 
 .agency-page-header h1 {
-  color: var(--agency-navy);
+  max-width: 19ch;
+  color: #fff;
+  text-wrap: balance;
 }
 
-.agency-page-header .text-primary {
-  --bs-primary-rgb: 51, 72, 196;
+.agency-page-header .agency-section-label,
+.agency-page-header a {
+  color: var(--agency-mint);
+}
+
+.agency-page-header .breadcrumb {
+  --bs-breadcrumb-divider-color: #b8c5df;
+  --bs-breadcrumb-item-active-color: #d4ddef;
+}
+
+.agency-page-header :focus-visible {
+  outline-color: var(--agency-mint);
 }
 
 .agency-section {
@@ -83,6 +100,7 @@ body {
   color: #4a5570;
 }
 
+.agency-page-header .agency-hero-copy,
 .agency-home-hero .agency-hero-copy,
 .agency-home-callout .agency-hero-copy {
   color: #d4ddef;
@@ -124,6 +142,11 @@ body {
 .agency-card,
 .agency-process-card,
 .agency-department,
+.agency-content-panel,
+.agency-contact-card,
+.agency-stat-card,
+.agency-admin-main .surface-card,
+.agency-login-card,
 [data-all-announcements] .card,
 [data-service-detail] aside .card {
   border-color: var(--agency-card-border);
@@ -133,6 +156,58 @@ body {
 .agency-step.agency-process-icon {
   background: #dff3ef;
   color: #176358;
+}
+
+.agency-content-panel,
+.agency-contact-card,
+.agency-stat-card,
+.agency-admin-main .surface-card,
+.agency-login-card {
+  border-radius: 1.125rem;
+  background-color: #fff;
+}
+
+.agency-content-panel,
+.agency-stat-card {
+  border: 1px solid var(--agency-card-border);
+}
+
+.agency-department,
+.agency-contact-card {
+  border-inline-start: .25rem solid #176358;
+}
+
+.agency-stat-card .agency-stat-value {
+  color: #3348c4;
+}
+
+[data-all-announcements] {
+  display: grid;
+  gap: 1rem;
+}
+
+[data-all-announcements] .card {
+  border-inline-start: .25rem solid var(--agency-accent);
+}
+
+.agency-announcement-date {
+  display: inline-block;
+  padding: .2rem .6rem;
+  border-radius: 2rem;
+  background: #e6f4f0;
+  color: #17594f;
+}
+
+#announcementModal .modal-header,
+.agency-admin-main .modal-header {
+  background: var(--agency-navy);
+  color: #fff;
+  --bs-heading-color: #fff;
+}
+
+#announcementModal .modal-header .btn-close,
+.agency-admin-main .modal-header .btn-close {
+  filter: var(--bs-btn-close-white-filter);
 }
 
 .agency-service-card {
@@ -211,6 +286,7 @@ html {
   display: grid;
   grid-template-rows: auto 1fr;
   grid-template-columns: minmax(0, 1fr);
+  --bs-light-rgb: 240, 243, 250;
 }
 
 [data-admin-shell] {
@@ -219,15 +295,75 @@ html {
 
 .agency-admin-header {
   grid-column: 1 / -1;
+  background-color: var(--agency-navy);
+  border-bottom-color: #33466e !important;
+}
+
+.agency-admin-sidebar {
+  background-color: #fff;
+}
+
+.agency-admin-sidebar .nav {
+  width: 100%;
+}
+
+.agency-admin-sidebar .nav-link:not(.active):hover {
+  background: #edf1ff;
+}
+
+.agency-admin-sidebar .nav-link.active {
+  background: #3348c4;
 }
 
 .agency-admin-main {
   min-width: 0;
 }
 
+.agency-admin-main > .mb-4:first-child {
+  padding: clamp(1rem, 3vw, 2rem);
+  border-radius: 1.125rem;
+  background: linear-gradient(110deg, var(--agency-navy), #243865);
+  color: #fff;
+  --bs-heading-color: #fff;
+  --bs-secondary-rgb: 212, 221, 239;
+}
+
+.agency-admin-main .card-header,
+.agency-admin-main .table-light {
+  --bs-table-bg: #eef2fa;
+  border-color: var(--agency-card-border);
+}
+
+.agency-admin-main [data-count] {
+  color: #3348c4;
+}
+
+.agency-login {
+  background: radial-gradient(ellipse at top right, #294580, transparent 65%), var(--agency-navy);
+}
+
+.agency-login-card {
+  border-top: .25rem solid #38a492;
+  box-shadow: 0 1rem 3rem rgb(5 10 25 / .28);
+}
+
+.agency-login-card input,
+.agency-admin-main .form-control,
+.agency-admin-main .form-select,
+.agency-contact-card .form-control,
+.agency-contact-card .form-select {
+  border-color: #8696b4;
+}
+
 @media (min-width: 992px) {
   .agency-admin {
     grid-template-columns: 15rem minmax(0, 1fr);
+  }
+
+  .agency-contact-overview .agency-contact-details {
+    display: grid;
+    grid-template-columns: minmax(0, 2fr) repeat(2, minmax(0, 1fr));
+    gap: 1.25rem;
   }
 }
 

@@ -47,11 +47,17 @@
       </div>
     </nav>
   </header>
-  <main id="main-content" tabindex="-1" class="container agency-section">
-    <span class="text-primary fw-semibold">DUYURULAR</span>
-    <h1 class="display-5 fw-bold mt-2">Tüm Duyurular</h1>
-    <p class="text-secondary">Duyurular en yeniden en eskiye sıralanır.</p>
-    <div class="mt-4" data-all-announcements></div>
+  <main id="main-content" tabindex="-1">
+    <section class="agency-page-header">
+      <div class="container">
+        <nav aria-label="Sayfa yolu"><ol class="breadcrumb small"><li class="breadcrumb-item"><a href="index.html">Ana Sayfa</a></li><li class="breadcrumb-item active" aria-current="page">Duyurular</li></ol></nav>
+        <h1 class="display-5 fw-bold mt-2">Duyurular</h1>
+        <p class="lead text-secondary agency-intro mb-0">NovaSoft Ajans’tan güncel haberler ve hizmet duyuruları.</p>
+      </div>
+    </section>
+    <section class="agency-section agency-soft-section" aria-label="Duyuru listesi">
+      <div class="container" data-all-announcements></div>
+    </section>
   </main>
   <footer class="border-top py-5 bg-dark text-white">
     <div class="container">

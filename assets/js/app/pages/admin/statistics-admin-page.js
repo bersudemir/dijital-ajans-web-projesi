@@ -37,6 +37,6 @@ form.querySelector('[data-statistics-fields]').innerHTML = sections.map(({ title
 
 form.addEventListener('submit', event => {
   event.preventDefault();
-  status.textContent = 'Değerler doğrulandı. Bu prototipte değişiklikler kaydedilmez.';
+  status.textContent = 'Değerler kontrol edildi. Değişiklikler kaydedilmedi.';
 });
 for (const event of ['input', 'reset']) form.addEventListener(event, () => { status.textContent = ''; });

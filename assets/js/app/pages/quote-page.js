@@ -22,7 +22,9 @@ if (requestedSlugs.length === 1 && services.some(service => service.slug === req
 
 form.addEventListener('input', event => {
   event.target.setCustomValidity('');
+  if (!services.length) return;
   status.textContent = '';
+  status.hidden = true;
   draft.hidden = true;
   openDraft.removeAttribute('href');
 });
@@ -55,8 +57,13 @@ form.addEventListener('submit', event => {
   draft.querySelector('#quote-draft-body').value = body;
   openDraft.href = `mailto:${recipient}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   draft.hidden = false;
-  status.textContent = 'Teklif taslağı hazır. E-posta gönderilmedi.';
+  status.textContent = 'Teklif talebiniz hazırlandı. E-posta uygulamanızdan gönderimi tamamlayabilirsiniz.';
+  status.hidden = false;
 });
 
 form.querySelector('[type="submit"]').disabled = services.length === 0;
-if (!services.length) status.textContent = 'Şu anda teklif talep edilebilecek bir hizmet bulunmuyor.';
+if (!services.length) {
+  status.classList.replace('alert-success', 'alert-secondary');
+  status.textContent = 'Şu anda teklif talep edilebilecek bir hizmet bulunmuyor.';
+  status.hidden = false;
+}

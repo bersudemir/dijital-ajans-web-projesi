@@ -46,7 +46,7 @@ mountEditor({
       active: fields.active.checked,
       files
     });
-    return 'Duyuru kaydedildi.';
+    return id ? 'Duyuru güncellendi.' : 'Duyuru eklendi.';
   },
   remove: id => app.announcements.delete(id)
 });

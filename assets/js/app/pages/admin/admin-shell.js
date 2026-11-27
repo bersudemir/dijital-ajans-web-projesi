@@ -34,7 +34,7 @@ function bindLogin() {
     try {
       sessionStorage.setItem(sessionKey, '1');
     } catch {
-      status.textContent = 'Demo oturumu açılamadı. Tarayıcı depolama ayarlarını kontrol edin.';
+      status.textContent = 'Oturum açılamadı. Tarayıcı depolama ayarlarını kontrol edin.';
       return;
     }
     location.replace('index.html');
@@ -50,9 +50,9 @@ function renderShell() {
   const shell = document.querySelector('[data-admin-shell]');
   shell.innerHTML = `
   <header class="agency-admin-header surface-header border-bottom sticky-top d-flex align-items-center gap-3 px-3 px-md-4 py-3">
-    <button class="btn btn-outline-primary d-lg-none" type="button" data-bs-toggle="offcanvas"
+    <button class="btn btn-outline-light d-lg-none" type="button" data-bs-toggle="offcanvas"
       data-bs-target="#admin-sidebar" aria-controls="admin-sidebar">Menü</button>
-    <a class="fw-bold text-body text-decoration-none" href="index.html">NovaSoft Ajans Yönetimi</a>
+    <a class="fw-bold text-white text-decoration-none d-flex align-items-center gap-2" href="index.html"><img src="../favicon.svg" width="28" height="28" alt="">NovaSoft Ajans Yönetimi</a>
   </header>
   <aside class="offcanvas-lg offcanvas-start surface-sidebar agency-admin-sidebar border-end" tabindex="-1"
     id="admin-sidebar" aria-labelledby="admin-nav-title">
@@ -62,7 +62,7 @@ function renderShell() {
     </div>
     <div class="offcanvas-body p-3">
       <nav class="nav nav-pills flex-column gap-1" aria-label="Yönetim menüsü">
-        ${link('index', 'Dashboard')}
+        ${link('index', 'Genel Bakış')}
         <p class="small text-secondary fw-semibold mt-3 mb-1 px-3">İçerik Yönetimi</p>
         ${link('hizmetler', 'Hizmetler')}
         ${link('duyurular', 'Duyurular')}

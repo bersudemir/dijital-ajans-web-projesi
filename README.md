@@ -6,6 +6,8 @@ NovaSoft Ajans, Web Tasarımı dersi kapsamında geliştirilen bir dijital ajans
 
 ![NovaSoft Ajans ana sayfası: lacivert giriş bölümü, dijital ürün illüstrasyonu ve dört istatistik kartı](docs/screenshots/ana-sayfa.png)
 
+Ekran görüntüleri: [Hizmetler](docs/screenshots/hizmetler.png), [İletişim](docs/screenshots/iletisim.png), [Yönetici girişi](docs/screenshots/yonetici-girisi.png), [Yönetim paneli](docs/screenshots/yonetim-paneli.png).
+
 ## Canlı Demo
 
 - [Canlı site](https://bersudemir.github.io/dijital-ajans-web-projesi/)
@@ -38,7 +40,7 @@ NovaSoft Ajans, Web Tasarımı dersi kapsamında geliştirilen bir dijital ajans
 | [Sayılarla Ajans](sayilarla-ajans.html) | Yıllık proje sayıları, hizmet dağılımı ve müşteri memnuniyetini gösteren SVG grafikler |
 | [İletişim](iletisim.html) | İletişim bilgileri, harita ve birbirinden bağımsız iki form |
 
-**Teklif talebi** hizmet detayından açıldığında ilgili aktif hizmeti otomatik seçer. Form bir e-posta taslağı hazırlar ve kullanıcının e-posta uygulamasında açmasına olanak verir. **Şikâyet ve öneri** formu kendi taslağını sayfa içinde önizler. İki form da doğrudan e-posta göndermez ve form verisini saklamaz.
+**Teklif talebi** hizmet detayından açıldığında ilgili aktif hizmeti otomatik seçer. Form bir e-posta taslağı hazırlar ve kullanıcının e-posta uygulamasında açmasına olanak verir. **Şikâyet ve öneri** formu ayrı bir taslak hazırlar ve aynı şekilde e-posta uygulamasında açılabilir. İki form da doğrudan e-posta göndermez ve form verisini saklamaz.
 
 ## Yönetim Paneli
 
@@ -91,7 +93,8 @@ flowchart TD
     Draft --> MailApp["İsteğe bağlı: e-posta uygulamasında aç"]
     Home --> Contact["İletişim sayfası"]
     Contact --> Feedback["Şikâyet ve öneri formu"]
-    Feedback --> Preview["Sayfada taslak önizlemesi"]
+    Feedback --> Preview["Mesaj taslağı"]
+    Preview --> MailApp
     Home --> Content["Duyurular ve istatistikler"]
 
     Admin["Yönetici"] --> Login["Demo giriş"]

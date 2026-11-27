@@ -52,53 +52,54 @@
       <nav aria-label="Sayfa yolu"><ol class="breadcrumb small"><li class="breadcrumb-item"><a href="index.html">Ana Sayfa</a></li><li class="breadcrumb-item active" aria-current="page">İletişim</li></ol></nav>
       <span class="text-primary fw-semibold">İletişim</span>
       <h1 class="display-5 fw-bold mt-2">Sizi dinlemeye hazırız.</h1>
-      <p class="lead text-secondary agency-intro mb-0">Projenizi, sorularınızı veya deneyiminize ilişkin görüşlerinizi bizimle paylaşmak için iletişim kanallarımızı inceleyin.</p>
+      <p class="lead text-secondary agency-intro mb-0">Projeniz hakkında konuşalım veya deneyiminize ilişkin görüşlerinizi paylaşın.</p>
     </div></section>
-    <section class="agency-section"><div class="container"><div class="row g-5">
-      <div class="col-lg-5">
+    <section class="agency-section agency-soft-section"><div class="container"><div class="row g-4">
+      <div class="col-12">
+        <div class="card agency-contact-card agency-contact-overview"><div class="card-body p-4">
         <h2 class="h3 fw-bold mb-4">İletişim bilgileri</h2>
         <address>
           <dl class="agency-contact-details">
-            <dt>Konum</dt>
-            <dd data-contact-field="address"></dd>
-            <dt>Telefon</dt>
-            <dd><a data-contact-field="phone">[Telefon]</a></dd>
-            <dt>E-posta</dt>
-            <dd><a data-contact-field="email">[E-posta]</a></dd>
+            <div><dt>Konum</dt><dd data-contact-field="address"></dd></div>
+            <div><dt>Telefon</dt><dd><a data-contact-field="phone">[Telefon]</a></dd></div>
+            <div><dt>E-posta</dt><dd><a data-contact-field="email">[E-posta]</a></dd></div>
           </dl>
         </address>
         <section id="sosyal-medya" class="mt-4">
           <h3 class="h5 fw-bold">Sosyal medya</h3>
-          <ul class="list-unstyled d-flex flex-wrap gap-3">
+          <ul class="list-unstyled d-flex flex-wrap gap-3 mb-0">
             <li><a class="text-secondary" data-social-profile="linkedin" aria-disabled="true">LinkedIn</a></li>
             <li><a class="text-secondary" data-social-profile="instagram" aria-disabled="true">Instagram</a></li>
             <li><a class="text-secondary" data-social-profile="github" aria-disabled="true">GitHub</a></li>
           </ul>
         </section>
+        </div></div>
       </div>
-      <div class="col-lg-7"><section class="card shadow-sm"><div class="card-body p-4 p-lg-5"><h2 class="h3 fw-bold">Şikayet ve Öneri Formu</h2><p id="form-note" class="text-secondary">Mesajınızı yazın ve e-posta taslağını önizleyin. Tüm alanlar zorunludur. Form üzerinden gönderim yapılmaz.</p>
+      <div class="col-lg-6"><section class="card agency-contact-card h-100"><div class="card-body p-4 p-lg-5"><h2 class="h3 fw-bold">Şikâyet ve Öneri Formu</h2><p id="form-note" class="text-secondary">Görüşlerinizi yazın ve e-posta taslağınızı hazırlayın. Tüm alanlar zorunludur.</p>
       <form data-contact-form aria-describedby="form-note"><div class="row g-3">
         <div class="col-md-6"><label class="form-label" for="full-name">Ad Soyad</label><input class="form-control" id="full-name" name="fullName" type="text" autocomplete="name" required minlength="2" maxlength="100"></div>
         <div class="col-md-6"><label class="form-label" for="email">E-posta</label><input class="form-control" id="email" name="email" type="email" autocomplete="email" required maxlength="254"></div>
         <div class="col-12"><label class="form-label" for="subject">Başlık</label><input class="form-control" id="subject" name="subject" type="text" required minlength="3" maxlength="150" placeholder="Görüşünüzü kısaca özetleyin"></div>
         <div class="col-12"><label class="form-label" for="message">Mesaj</label><textarea class="form-control" id="message" name="message" rows="6" required minlength="10" maxlength="3000" placeholder="Şikayet veya önerinizi paylaşın"></textarea></div>
-        <div class="col-12"><button class="btn btn-primary" type="submit" disabled>Taslağı Önizle</button></div>
+        <div class="col-12"><button class="btn btn-primary" type="submit" disabled>Taslağı Hazırla</button></div>
       </div></form>
-      <p class="mt-3 mb-0 text-primary" data-form-status role="status" aria-live="polite"></p>
+      <p class="alert alert-success mt-3 mb-0" data-form-status role="status" hidden></p>
       <section class="border rounded-3 p-3 mt-3" aria-labelledby="draft-title" data-contact-draft hidden>
         <h3 class="h5" id="draft-title">E-posta taslağı</h3>
         <dl class="mb-3">
           <dt>Alıcı</dt>
-          <dd class="text-break">musteriiliskileri@novasoft.example</dd>
+          <dd class="text-break" data-draft-recipient></dd>
           <dt>Konu</dt>
           <dd class="text-break" data-draft-subject></dd>
         </dl>
         <label class="form-label" for="draft-body">E-posta içeriği</label>
         <textarea class="form-control" id="draft-body" rows="6" readonly></textarea>
+        <a class="btn btn-outline-primary mt-3" data-contact-open>E-posta Uygulamasında Aç</a>
       </section>
       <noscript><p class="text-secondary mt-3">Form önizlemesini kullanmak için JavaScript’i etkinleştirin. Herhangi bir gönderim yapılmaz.</p></noscript>
-      </div></section>
-      <section class="card shadow-sm mt-4" id="teklif-talebi" aria-labelledby="quote-title" tabindex="-1">
+      </div></section></div>
+      <div class="col-lg-6">
+      <section class="card agency-contact-card h-100" id="teklif-talebi" aria-labelledby="quote-title" tabindex="-1">
         <div class="card-body p-4 p-lg-5">
           <h2 class="h3 fw-bold" id="quote-title">Teklif Talep Formu</h2>
           <p class="text-secondary" id="quote-note">Projenizi kısaca anlatın. Hazırlanan taslağı e-posta uygulamanızda açabilirsiniz. Tüm alanlar zorunludur.</p>
@@ -127,7 +128,7 @@
               </div>
             </div>
           </form>
-          <p class="mt-3 mb-0 text-primary" data-quote-status role="status"></p>
+          <p class="alert alert-success mt-3 mb-0" data-quote-status role="status" hidden></p>
           <section class="border rounded-3 p-3 mt-3" data-quote-draft aria-labelledby="quote-draft-title" hidden>
             <h3 class="h5" id="quote-draft-title">Teklif Talebi Taslağı</h3>
             <dl class="mb-3">
@@ -144,12 +145,14 @@
         </div>
       </section></div>
     </div></div></section>
-    <section class="agency-section bg-light">
+    <section class="agency-section">
       <div class="container">
+        <div class="agency-content-panel p-3 p-md-4">
         <h2 class="h3 fw-bold">Konum</h2>
         <p class="text-secondary mb-0" data-contact-map-note>Harita şu anda görüntülenemiyor.</p>
         <iframe class="agency-map rounded-4 border" data-contact-map title="Umuttepe Yerleşkesi konum haritası"
           loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen hidden></iframe>
+        </div>
       </div>
     </section>
   </main>

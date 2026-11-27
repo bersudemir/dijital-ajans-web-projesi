@@ -34,6 +34,6 @@ mountEditor({
     if (!fields.title.value.trim() || !fields.description.value.trim()) {
       throw new Error('Birim adı ve açıklaması zorunludur.');
     }
-    return 'Form doğrulandı. Bu prototipte değişiklikler kaydedilmez.';
+    return 'Birim bilgileri kontrol edildi. Değişiklikler kaydedilmedi.';
   }
 });

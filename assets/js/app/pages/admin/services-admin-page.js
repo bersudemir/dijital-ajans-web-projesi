@@ -32,7 +32,7 @@ mountEditor({
       features: fields.features.value.split('\n').map(feature => feature.trim()).filter(Boolean),
       active: fields.active.checked
     });
-    return 'Hizmet kaydedildi.';
+    return id ? 'Hizmet güncellendi.' : 'Hizmet eklendi.';
   },
   remove: id => app.services.delete(id)
 });

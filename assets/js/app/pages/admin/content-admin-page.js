@@ -4,7 +4,7 @@ const status = document.querySelector('[data-content-status]');
 
 form.addEventListener('submit', event => {
   event.preventDefault();
-  status.textContent = 'Alanlar doğrulandı. Bu prototipte değişiklikler kaydedilmez.';
+  status.textContent = 'Alanlar kontrol edildi. Değişiklikler kaydedilmedi.';
 });
 
 form.addEventListener('input', () => { status.textContent = ''; });

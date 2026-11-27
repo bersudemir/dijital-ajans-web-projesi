@@ -31,21 +31,39 @@ mountEditor({
     for (const name of ['title', 'summary', 'content']) fields.namedItem(name).value = item[name];
     fields.active.checked = item.active;
   },
-  submit(fields, id) {
+  async submit(fields, id) {
     const files = [];
+    const types = {
+      image: ['image/jpeg', 'image/png', 'image/webp'],
+      pdf: ['application/pdf'],
+      word: ['application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document']
+    };
+    const extensions = { image: /\.(jpe?g|png|webp)$/i, pdf: /\.pdf$/i, word: /\.docx?$/i };
     for (const kind of fileKinds) {
       const file = fields.namedItem(kind).files[0];
-      if (file) files.push({ kind, name: file.name, size: file.size, type: file.type });
+      if (!file) continue;
+      if (!types[kind].includes(file.type) || !extensions[kind].test(file.name)) {
+        throw new Error(`${kind.toUpperCase()} için geçerli bir dosya türü seçin.`);
+      }
+      if (file.size > 256 * 1024) throw new Error('Her dosya en fazla 256 KB olabilir.');
+      const dataUrl = await new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = () => resolve(reader.result);
+        reader.onerror = () => reject(new Error('Dosya okunamadı.'));
+        reader.readAsDataURL(file);
+      });
+      files.push({ kind, name: file.name, size: file.size, type: file.type, dataUrl });
     }
-    app.announcements.save({
-      id,
-      title: fields.title.value,
-      summary: fields.summary.value,
-      content: fields.content.value,
-      publishedAt: fields.publishedAt.value,
-      active: fields.active.checked,
-      files
-    });
+    try {
+      app.announcements.save({
+        id, title: fields.title.value, summary: fields.summary.value,
+        content: fields.content.value, publishedAt: fields.publishedAt.value,
+        active: fields.active.checked, files
+      });
+    } catch (error) {
+      if (error.name === 'QuotaExceededError') throw new Error('Tarayıcı depolama sınırı aşıldı. Daha küçük dosya seçin.');
+      throw error;
+    }
     return id ? 'Duyuru güncellendi.' : 'Duyuru eklendi.';
   },
   remove: id => app.announcements.delete(id)

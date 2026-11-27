@@ -1,10 +1,10 @@
 import { app } from '../core/bootstrap-app.js';
 import { siteContact } from '../core/site-contact.js';
+import { LocalStorageAdapter } from '../core/local-storage-adapter.js';
 
 const form = document.querySelector('[data-quote-form]');
 const status = document.querySelector('[data-quote-status]');
-const draft = document.querySelector('[data-quote-draft]');
-const openDraft = draft.querySelector('[data-quote-open]');
+const storage = new LocalStorageAdapter();
 const name = form.elements.namedItem('fullName');
 const email = form.elements.namedItem('email');
 const serviceField = form.elements.namedItem('service');
@@ -25,8 +25,6 @@ form.addEventListener('input', event => {
   if (!services.length) return;
   status.textContent = '';
   status.hidden = true;
-  draft.hidden = true;
-  openDraft.removeAttribute('href');
 });
 
 form.addEventListener('submit', event => {
@@ -52,12 +50,19 @@ form.addEventListener('submit', event => {
     description.value.trim().replace(/\r?\n/g, '\r\n')
   ].join('\r\n');
 
-  draft.querySelector('[data-quote-recipient]').textContent = recipient;
-  draft.querySelector('[data-quote-subject]').textContent = subject;
-  draft.querySelector('#quote-draft-body').value = body;
-  openDraft.href = `mailto:${recipient}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-  draft.hidden = false;
-  status.textContent = 'Teklif talebiniz hazırlandı. E-posta uygulamanızdan gönderimi tamamlayabilirsiniz.';
+  try {
+    storage.set('quotes', [...storage.get('quotes', []), {
+      fullName: name.value.trim(), email: email.value.trim(), service: service.slug,
+      description: description.value.trim(), recipient, subject, body,
+      createdAt: new Date().toISOString()
+    }]);
+    form.reset();
+    status.classList.replace('alert-danger', 'alert-success');
+    status.textContent = 'Talebiniz kaydedildi. İlginiz için teşekkür ederiz.';
+  } catch {
+    status.classList.replace('alert-success', 'alert-danger');
+    status.textContent = 'Talep kaydedilemedi. Tarayıcı depolama alanını kontrol edin.';
+  }
   status.hidden = false;
 });
 

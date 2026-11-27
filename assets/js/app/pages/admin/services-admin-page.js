@@ -1,5 +1,5 @@
 import { app } from '../../core/bootstrap-app.js';
-import { escapeHtml, formatCurrency } from '../../core/formatters.js';
+import { formatCurrency } from '../../core/formatters.js';
 import { findServiceImage, serviceImages } from '../../core/service-images.js';
 import { mountEditor, publicationBadge } from './record-editor.js';
 
@@ -8,12 +8,12 @@ for (const image of serviceImages) imageSelect.add(new Option(image.label, image
 
 mountEditor({
   noun: 'Hizmet',
-  columnCount: 5,
+  columnCount: 4,
   list: () => app.services.listForManagement(),
-  columns: item => [`<code class="text-break">${escapeHtml(item.slug)}</code>`, formatCurrency(item.price), publicationBadge(item.active)],
+  columns: item => [formatCurrency(item.price), publicationBadge(item.active)],
   populate(fields, item) {
     if (!item) return;
-    for (const name of ['title', 'slug', 'price', 'shortDescription', 'description']) {
+    for (const name of ['title', 'price', 'shortDescription', 'description']) {
       fields.namedItem(name).value = item[name];
     }
     fields.features.value = item.features.join('\n');
@@ -24,7 +24,6 @@ mountEditor({
     app.services.save({
       id,
       title: fields.title.value,
-      slug: fields.slug.value,
       shortDescription: fields.shortDescription.value,
       description: fields.description.value,
       price: fields.price.valueAsNumber,

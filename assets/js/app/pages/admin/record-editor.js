@@ -63,11 +63,11 @@ export function mountEditor({ noun, columnCount, list, columns, populate, submit
 
   modal.addEventListener('shown.bs.modal', () => form.elements.namedItem('title').focus());
   modal.addEventListener('hidden.bs.modal', () => (trigger?.isConnected ? trigger : add).focus());
-  form.addEventListener('submit', event => {
+  form.addEventListener('submit', async event => {
     event.preventDefault();
     error.hidden = true;
     try {
-      const message = submit(form.elements, selected?.id);
+      const message = await submit(form.elements, selected?.id);
       render();
       status.textContent = message;
       bootstrap.Modal.getInstance(modal).hide();

@@ -1,5 +1,8 @@
 import { completedProjects, serviceBreakdown, satisfaction, totalProjects, metrics } from '../core/statistics-data.js';
 
+document.querySelector('[data-project-summary]').textContent =
+  `${completedProjects[0].label}–${completedProjects.at(-1).label} döneminde toplam ${totalProjects} proje tamamladık.`;
+
 // Bootstrap Admin / HTML charts.html örneğindeki viewBox, grid ve koordinat yaklaşımı.
 const plot = { width: 320, height: 210, left: 39, right: 10, top: 27, bottom: 34 };
 const plotWidth = plot.width - plot.left - plot.right;
@@ -9,7 +12,7 @@ const plotHeight = baseline - plot.top;
 function plotChart(target, entries, { id, title, ticks, format = String, line = false }) {
   const min = ticks[0];
   const max = ticks.at(-1);
-  const y = value => baseline - (value - min) / (max - min) * plotHeight;
+  const y = value => baseline - (value - min) / Math.max(1, max - min) * plotHeight;
   const slot = plotWidth / entries.length;
   const points = entries.map((entry, index) => ({
     ...entry,
@@ -52,9 +55,10 @@ function plotChart(target, entries, { id, title, ticks, format = String, line = 
 }
 
 function renderBreakdown(target) {
+  const breakdownTotal = serviceBreakdown.reduce((sum, item) => sum + item.value, 0);
   let offset = 0;
   const segments = serviceBreakdown.map(({ value, color }) => {
-    const share = value / totalProjects * 100;
+    const share = breakdownTotal ? value / breakdownTotal * 100 : 0;
     const angle = (offset + share / 2) / 100 * 2 * Math.PI - Math.PI / 2;
     const segment = `
       <circle cx="90" cy="90" r="64" pathLength="100" fill="none" stroke="${color}" stroke-width="32"
@@ -70,7 +74,7 @@ function renderBreakdown(target) {
       ${segments.map(item => item.segment).join('')}
       <g text-anchor="middle">
         ${segments.map(item => item.label).join('')}
-        <text x="90" y="89" fill="var(--bs-body-color)" font-size="27" font-weight="700">${totalProjects}</text>
+        <text x="90" y="89" fill="var(--bs-body-color)" font-size="27" font-weight="700">${breakdownTotal}</text>
         <text x="90" y="108" fill="var(--bs-secondary-color)" font-size="13">Toplam proje</text>
       </g>
     </svg>
@@ -91,13 +95,21 @@ for (const element of document.querySelectorAll('[data-statistic]')) {
 plotChart(document.querySelector('[data-project-chart]'), completedProjects, {
   id: 'completed-projects',
   title: 'Yıllara göre tamamlanan projeler',
-  ticks: [0, 10, 20, 30]
+  ticks: (() => {
+    const max = Math.max(...completedProjects.map(item => item.value), 1);
+    const step = max <= 5 ? 1 : Math.ceil(max / 4 / 5) * 5;
+    return [0, step, step * 2, step * 3, step * 4];
+  })()
 });
 renderBreakdown(document.querySelector('[data-service-chart]'));
 plotChart(document.querySelector('[data-satisfaction-chart]'), satisfaction, {
   id: 'quarterly-satisfaction',
   title: 'Çeyreklere göre müşteri memnuniyeti',
-  ticks: [90, 95, 100],
+  ticks: (() => {
+    const low = Math.min(...satisfaction.map(item => item.value));
+    const start = Math.max(0, Math.floor(low / 10) * 10 - 10);
+    return [start, (start + 100) / 2, 100];
+  })(),
   format: value => `%${value}`,
   line: true
 });

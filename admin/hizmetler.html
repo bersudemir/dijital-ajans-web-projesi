@@ -16,7 +16,7 @@
   <main id="admin-main" class="agency-admin-main p-3 p-md-4" tabindex="-1" hidden>
     <div class="mb-4">
       <h1 class="h2 fw-bold">Hizmetler</h1>
-      <p class="text-secondary mb-0">Public sitede görünen hizmetleri yönetin.</p>
+      <p class="text-secondary mb-0">Sitede görünen hizmetleri yönetin.</p>
     </div>
     <section class="surface-card card shadow-sm mb-4" aria-labelledby="list-title">
       <div class="card-header bg-transparent d-flex flex-wrap align-items-center justify-content-between gap-2 p-3 p-md-4">
@@ -26,7 +26,7 @@
       <div class="table-responsive">
         <table class="table align-middle mb-0">
           <thead class="table-light">
-            <tr><th scope="col">Hizmet adı</th><th scope="col">Slug</th><th scope="col">Fiyat</th><th scope="col">Durum</th><th scope="col">İşlemler</th></tr>
+            <tr><th scope="col">Hizmet adı</th><th scope="col">Fiyat</th><th scope="col">Durum</th><th scope="col">İşlemler</th></tr>
           </thead>
           <tbody data-records></tbody>
         </table>
@@ -46,11 +46,6 @@
             <label for="title" class="form-label">Hizmet adı</label>
             <input id="title" name="title" class="form-control" required maxlength="120">
           </div>
-          <div>
-            <label for="slug" class="form-label">Slug</label>
-            <input id="slug" name="slug" class="form-control" required maxlength="120" pattern="[a-z0-9]+(?:-[a-z0-9]+)*" aria-describedby="slug-note">
-          </div>
-          <p class="form-text m-0" id="slug-note">Örnek: web-tasarim. Slug değişirse eski detay adresi geçersiz olur.</p>
           <div>
             <label for="price" class="form-label">Başlangıç fiyatı (TL)</label>
             <input id="price" name="price" class="form-control" type="number" min="0" step="1" required>
@@ -75,7 +70,7 @@
           </div>
           <div class="form-check">
             <input class="form-check-input" type="checkbox" id="active" name="active" checked>
-            <label class="form-check-label" for="active">Aktif · Public sitede göster</label>
+            <label class="form-check-label" for="active">Aktif · Sitede göster</label>
           </div>
           </div>
           <div class="modal-footer">

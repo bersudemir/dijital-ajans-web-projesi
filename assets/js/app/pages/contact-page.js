@@ -1,13 +1,11 @@
 import { siteContact } from '../core/site-contact.js';
+import { LocalStorageAdapter } from '../core/local-storage-adapter.js';
 
 const form = document.querySelector('[data-contact-form]');
 const status = document.querySelector('[data-form-status]');
-const draft = document.querySelector('[data-contact-draft]');
+const storage = new LocalStorageAdapter();
 
-if (form && status && draft) {
-  const draftSubject = draft.querySelector('[data-draft-subject]');
-  const draftBody = draft.querySelector('#draft-body');
-  const openDraft = draft.querySelector('[data-contact-open]');
+if (form && status) {
   const fields = Array.from(form.querySelectorAll('input, textarea'));
   const validate = field => {
     const tooShort = field.value.trim().length < Math.max(1, field.minLength);
@@ -20,8 +18,6 @@ if (form && status && draft) {
       validate(field);
       status.textContent = '';
       status.hidden = true;
-      draft.hidden = true;
-      openDraft.removeAttribute('href');
     });
   });
 
@@ -38,12 +34,20 @@ if (form && status && draft) {
       '',
       data.get('message').trim().replace(/\r?\n/g, '\r\n')
     ].join('\r\n');
-    draft.querySelector('[data-draft-recipient]').textContent = recipient;
-    draftSubject.textContent = subject;
-    draftBody.value = body;
-    openDraft.href = `mailto:${recipient}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    draft.hidden = false;
-    status.textContent = 'Mesajınız hazırlandı. Göndermek için e-posta uygulamanızı kullanın.';
+    try {
+      storage.set('feedback', [...storage.get('feedback', []), {
+        fullName: data.get('fullName').trim(), email: data.get('email').trim(),
+        subject, message: data.get('message').trim(), recipient, body,
+        createdAt: new Date().toISOString()
+      }]);
+      form.reset();
+      fields.forEach(field => field.setCustomValidity(''));
+      status.classList.replace('alert-danger', 'alert-success');
+      status.textContent = 'Mesajınız kaydedildi. Görüşleriniz için teşekkür ederiz.';
+    } catch {
+      status.classList.replace('alert-success', 'alert-danger');
+      status.textContent = 'Mesaj kaydedilemedi. Tarayıcı depolama alanını kontrol edin.';
+    }
     status.hidden = false;
   });
 

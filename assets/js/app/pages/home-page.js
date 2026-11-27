@@ -1,6 +1,12 @@
 import { app } from '../core/bootstrap-app.js';
 import { escapeHtml, formatCurrency } from '../core/formatters.js';
 import { resolveServiceImage } from '../core/service-images.js';
+import { metrics } from '../core/statistics-data.js';
+import { appendAttachments } from '../core/announcement-attachments.js';
+
+for (const element of document.querySelectorAll('[data-home-statistic]')) {
+  element.textContent = metrics[element.dataset.homeStatistic];
+}
 
 function renderServices() {
   const container = document.querySelector('[data-services]');
@@ -73,6 +79,7 @@ function bindAnnouncementModal() {
 
     modal.querySelector('[data-modal-title]').textContent = item.title;
     modal.querySelector('[data-modal-content]').textContent = item.content;
+    appendAttachments(modal.querySelector('.modal-body'), item.attachments);
   });
 }
 

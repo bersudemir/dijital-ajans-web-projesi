@@ -58,10 +58,10 @@
             <label for="publishedAt" class="form-label">Yayın tarihi ve saati</label>
             <input id="publishedAt" name="publishedAt" class="form-control" type="datetime-local" required>
           </div>
-          <p class="form-text mb-0" id="file-note">Yalnızca dosya adı, türü ve boyutu kaydedilir.</p>
+          <p class="form-text mb-0" id="file-note">PDF, Word veya JPG/PNG/WebP görselleri seçin. Her dosya en fazla 256 KB olabilir.</p>
           <div>
             <label for="image" class="form-label">Görsel</label>
-            <input id="image" name="image" class="form-control" type="file" accept="image/*" aria-describedby="file-note">
+            <input id="image" name="image" class="form-control" type="file" accept=".jpg,.jpeg,.png,.webp,image/jpeg,image/png,image/webp" aria-describedby="file-note">
           </div>
           <div>
             <label for="pdf" class="form-label">PDF</label>
@@ -74,7 +74,7 @@
           <p class="small text-secondary mb-0" data-saved-files></p>
           <div class="form-check">
             <input class="form-check-input" type="checkbox" id="active" name="active" checked>
-            <label class="form-check-label" for="active">Aktif · Public sitede göster</label>
+            <label class="form-check-label" for="active">Aktif · Sitede göster</label>
           </div>
           </div>
           <div class="modal-footer">

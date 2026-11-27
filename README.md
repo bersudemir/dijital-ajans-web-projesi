@@ -2,7 +2,7 @@
 
 ## Proje Hakkında
 
-NovaSoft Ajans, Web Tasarımı dersi kapsamında geliştirilen bir dijital ajans sitesidir. Ziyaretçiler ajansın hizmetlerini ve duyurularını inceleyebilir, istatistikleri görebilir ve iletişim formlarından e-posta taslağı hazırlayabilir. Ayrı yönetim paneli, hizmet ve duyuru kayıtlarının tarayıcı üzerinden düzenlenmesini sağlar.
+NovaSoft Ajans, Web Tasarımı dersi kapsamında geliştirilen kurgusal bir dijital ajans sitesidir. Ziyaretçiler hizmetleri ve duyuruları inceleyebilir, istatistikleri görebilir ve iki ayrı iletişim formunu kullanabilir. Yönetim paneli, site içeriklerinin tarayıcı üzerinden düzenlenmesini sağlar.
 
 ![NovaSoft Ajans ana sayfası: lacivert giriş bölümü, dijital ürün illüstrasyonu ve dört istatistik kartı](docs/screenshots/ana-sayfa.png)
 
@@ -22,7 +22,7 @@ Ekran görüntüleri: [Hizmetler](docs/screenshots/hizmetler.png), [İletişim](
 | Bootstrap 5 | Izgara, mobil menü, hizmet slider’ı, modallar ve form bileşenleri |
 | JavaScript ES modülleri | Sayfa etkileşimleri, form doğrulama, veri okuma ve yönetim işlemleri |
 | Yerel SVG | Ajans ve hizmet illüstrasyonları ile tarayıcıda çizilen grafikler |
-| LocalStorage ve SessionStorage | Hizmet ve duyuru kayıtları ile sekmeye ait demo oturum işareti |
+| LocalStorage ve SessionStorage | Site kayıtları, form başvuruları ve sekmeye ait giriş işareti |
 
 ## Hazır Şablon ve Özelleştirmeler
 
@@ -40,7 +40,7 @@ Ekran görüntüleri: [Hizmetler](docs/screenshots/hizmetler.png), [İletişim](
 | [Sayılarla Ajans](sayilarla-ajans.html) | Yıllık proje sayıları, hizmet dağılımı ve müşteri memnuniyetini gösteren SVG grafikler |
 | [İletişim](iletisim.html) | İletişim bilgileri, harita ve birbirinden bağımsız iki form |
 
-**Teklif talebi** hizmet detayından açıldığında ilgili aktif hizmeti otomatik seçer. Form bir e-posta taslağı hazırlar ve kullanıcının e-posta uygulamasında açmasına olanak verir. **Şikâyet ve öneri** formu ayrı bir taslak hazırlar ve aynı şekilde e-posta uygulamasında açılabilir. İki form da doğrudan e-posta göndermez ve form verisini saklamaz.
+**Teklif talebi** hizmet detayından açıldığında ilgili aktif hizmeti otomatik seçer. **Şikâyet ve öneri** formu ayrı çalışır. Geçerli başvurular tarayıcının `localStorage` alanına kaydedilir. Alıcı, konu ve mesaj e-posta gönderimine uygun biçimde hazırlanır; gerçek e-posta gönderimi yapılmaz. Kayıtlar yalnızca kullanılan tarayıcıda görülebilir.
 
 ## Yönetim Paneli
 
@@ -50,7 +50,7 @@ Ekran görüntüleri: [Hizmetler](docs/screenshots/hizmetler.png), [İletişim](
 
 Demo bilgileri JavaScript kodunda görülebilir. Bu giriş gerçek kimlik doğrulama veya güvenlik sağlamaz. Uygulama giriş bilgilerini saklamaz ve `sessionStorage` alanında yalnızca sekmeye ait oturum işaretini tutar.
 
-Panelde hizmet ve duyuru kayıtları eklenebilir, düzenlenebilir ve silinebilir. Hizmetlerde yerel SVG seçilebilir. Duyuru ekleri için sadece dosya bilgileri tutulur. Yalnızca hizmet ve duyuru kayıtları `localStorage` alanında saklanır. Birimler, Sayfa İçerikleri ve İstatistikler ekranları düzenleme prototipidir ve değişiklikleri kaydetmez.
+Panelde hizmet, duyuru ve birim kayıtları eklenebilir, düzenlenebilir ve silinebilir. Hizmetlerde yerel SVG seçilebilir. Küçük duyuru ekleri (dosya başına en fazla 256 KB) tarayıcıda saklanır ve ziyaretçi sayfalarından indirilebilir. Sayfa İçerikleri ekranı kurumsal metinleri, iletişim bilgilerini ve harita adresini; İstatistikler ekranı ana sayfa göstergelerini ve SVG grafik verilerini günceller. Bu kayıtlar `localStorage` alanında saklanır ve sayfa yenilendiğinde korunur.
 
 ## Kurulum ve Çalıştırma
 
@@ -89,12 +89,10 @@ flowchart TD
     Home --> Services["Hizmet listesi veya slider"]
     Services --> Detail["Hizmet detayı"]
     Detail --> Quote["Teklif formu: hizmet otomatik seçilir"]
-    Quote --> Draft["E-posta taslağı"]
-    Draft --> MailApp["İsteğe bağlı: e-posta uygulamasında aç"]
+    Quote --> SavedQuote["Teklif talebi tarayıcıya kaydedilir"]
     Home --> Contact["İletişim sayfası"]
     Contact --> Feedback["Şikâyet ve öneri formu"]
-    Feedback --> Preview["Mesaj taslağı"]
-    Preview --> MailApp
+    Feedback --> SavedFeedback["Mesaj tarayıcıya kaydedilir"]
     Home --> Content["Duyurular ve istatistikler"]
 
     Admin["Yönetici"] --> Login["Demo giriş"]
@@ -102,7 +100,7 @@ flowchart TD
     Valid -->|Evet| Dashboard["Yönetim paneli"]
     Valid -->|Hayır| Error["Hata mesajı"]
     Error --> Login
-    Dashboard --> Manage["Hizmet ve duyuru kayıtlarını yönet"]
+    Dashboard --> Manage["Hizmet, duyuru, birim, içerik ve istatistikleri yönet"]
     Dashboard --> Logout["Çıkış yap"]
     Logout --> Login
 ```
@@ -125,9 +123,10 @@ flowchart LR
 
 ## Projenin Sınırlılıkları
 
-- Hizmet ve duyuru kayıtları tarayıcıya ve site adresine özeldir. Farklı cihazlar veya tarayıcı profilleri arasında eşitlenmez.
+- Kayıtlar ve form başvuruları tarayıcıya ve site adresine özeldir. Farklı cihazlar veya tarayıcı profilleri arasında eşitlenmez.
 - Demo oturumu istemci tarafında çalışır. Projede sunucu tarafı kimlik doğrulama ve veritabanı bulunmaz.
-- Formlar yalnızca taslak hazırlar. Duyuru eklerinin içeriği yüklenmez.
+- İletişimde gösterilen Umuttepe Yerleşkesi konumu eğitim projesi için seçilmiştir; NovaSoft Ajans’ın gerçek ofisi veya üniversiteyle kurumsal bağı olarak değerlendirilmemelidir.
+- Formlar alıcı, konu ve mesajı hazırlar ve yerel kayıt oluşturur; e-posta göndermez. Duyuru ekleri küçük dosyalarla ve tarayıcının depolama kotasıyla sınırlıdır.
 - Bootstrap JavaScript paketi ve harita gibi dış kaynakların yüklenmesi internet bağlantısına bağlıdır.
 
 ## Lisans

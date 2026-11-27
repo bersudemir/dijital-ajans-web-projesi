@@ -29,8 +29,8 @@ export class AnnouncementService {
     const attachments = (previous?.attachments ?? []).filter(
       attachment => !files.some(file => file.kind === attachment?.kind)
     );
-    for (const { kind, name, size, type } of files) {
-      attachments.push({ kind, name, size, type });
+    for (const { kind, name, size, type, dataUrl } of files) {
+      attachments.push({ kind, name, size, type, dataUrl });
     }
 
     return this.repository.save(new Announcement({

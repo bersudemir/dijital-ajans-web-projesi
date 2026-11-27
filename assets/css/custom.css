@@ -207,7 +207,8 @@ body {
 
 #announcementModal .modal-header .btn-close,
 .agency-admin-main .modal-header .btn-close {
-  filter: var(--bs-btn-close-white-filter);
+  filter: invert(1) grayscale(100%) brightness(200%);
+  opacity: .85;
 }
 
 .agency-service-card {

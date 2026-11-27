@@ -1,4 +1,3 @@
-import './admin-shell.js';
 import { mountEditor } from './record-editor.js';
 
 // The public page remains the source while department management is a prototype.

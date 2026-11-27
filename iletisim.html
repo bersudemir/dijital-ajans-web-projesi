@@ -97,7 +97,52 @@
         <textarea class="form-control" id="draft-body" rows="6" readonly></textarea>
       </section>
       <noscript><p class="text-secondary mt-3">Form önizlemesini kullanmak için JavaScript’i etkinleştirin. Herhangi bir gönderim yapılmaz.</p></noscript>
-      </div></section></div>
+      </div></section>
+      <section class="card shadow-sm mt-4" id="teklif-talebi" aria-labelledby="quote-title" tabindex="-1">
+        <div class="card-body p-4 p-lg-5">
+          <h2 class="h3 fw-bold" id="quote-title">Teklif Talep Formu</h2>
+          <p class="text-secondary" id="quote-note">Projenizi kısaca anlatın. Hazırlanan taslağı e-posta uygulamanızda açabilirsiniz. Tüm alanlar zorunludur.</p>
+          <form data-quote-form aria-describedby="quote-note">
+            <div class="row g-3">
+              <div class="col-md-6">
+                <label class="form-label" for="quote-name">Ad Soyad</label>
+                <input class="form-control" id="quote-name" name="fullName" type="text" autocomplete="name" required minlength="2" maxlength="100">
+              </div>
+              <div class="col-md-6">
+                <label class="form-label" for="quote-email">E-posta</label>
+                <input class="form-control" id="quote-email" name="email" type="email" autocomplete="email" required maxlength="254">
+              </div>
+              <div class="col-12">
+                <label class="form-label" for="quote-service">İlgilenilen Hizmet</label>
+                <select class="form-select" id="quote-service" name="service" required>
+                  <option value="">Hizmet seçin</option>
+                </select>
+              </div>
+              <div class="col-12">
+                <label class="form-label" for="quote-description">Proje Açıklaması</label>
+                <textarea class="form-control" id="quote-description" name="description" rows="5" required minlength="10" maxlength="1500"></textarea>
+              </div>
+              <div class="col-12">
+                <button class="btn btn-primary" type="submit" disabled>Taslağı Hazırla</button>
+              </div>
+            </div>
+          </form>
+          <p class="mt-3 mb-0 text-primary" data-quote-status role="status"></p>
+          <section class="border rounded-3 p-3 mt-3" data-quote-draft aria-labelledby="quote-draft-title" hidden>
+            <h3 class="h5" id="quote-draft-title">Teklif Talebi Taslağı</h3>
+            <dl class="mb-3">
+              <dt>Alıcı</dt>
+              <dd class="text-break" data-quote-recipient></dd>
+              <dt>Konu</dt>
+              <dd class="text-break" data-quote-subject></dd>
+            </dl>
+            <label class="form-label" for="quote-draft-body">E-posta içeriği</label>
+            <textarea class="form-control" id="quote-draft-body" rows="6" readonly></textarea>
+            <a class="btn btn-outline-primary mt-3" data-quote-open>E-posta Uygulamasında Aç</a>
+          </section>
+          <noscript><p class="text-secondary mt-3 mb-0">Teklif taslağı hazırlamak için JavaScript’i etkinleştirin.</p></noscript>
+        </div>
+      </section></div>
     </div></div></section>
     <section class="agency-section bg-light">
       <div class="container">
@@ -116,7 +161,7 @@
           <p class="text-white-50">Web siteleri, mobil uygulamalar ve kurumsal yazılım çözümleri tasarlıyor ve geliştiriyoruz.</p>
         </div>
         <div class="col-6 col-lg-2"><h3 class="h6">Kurumsal</h3><a class="d-block text-white-50 agency-footer-link" href="hakkimizda.html">Hakkımızda</a><a class="d-block text-white-50 agency-footer-link" href="misyon-vizyon.html">Misyon & Vizyon</a></div>
-        <div class="col-6 col-lg-2"><h3 class="h6">Hızlı Erişim</h3><a class="d-block text-white-50 agency-footer-link" href="hizmetler.html">Hizmetler</a><a class="d-block text-white-50 agency-footer-link" href="duyurular.html">Duyurular</a><a class="d-block text-white-50 agency-footer-link" href="birimler.html">Birimler</a><a class="d-block text-white-50 agency-footer-link" href="iletisim.html">İletişim</a><a class="d-block text-white-50 agency-footer-link" href="admin/index.html">Yönetim Paneli</a></div>
+        <div class="col-6 col-lg-2"><h3 class="h6">Hızlı Erişim</h3><a class="d-block text-white-50 agency-footer-link" href="hizmetler.html">Hizmetler</a><a class="d-block text-white-50 agency-footer-link" href="duyurular.html">Duyurular</a><a class="d-block text-white-50 agency-footer-link" href="birimler.html">Birimler</a><a class="d-block text-white-50 agency-footer-link" href="iletisim.html">İletişim</a><a class="d-block text-white-50 agency-footer-link" href="admin/giris.html">Yönetim Paneli</a></div>
         <div class="col-lg-3">
           <h3 class="h6">İletişim</h3>
           <address class="text-white-50 mb-2">
@@ -136,5 +181,6 @@
     </div>
   </footer>
   <script type="module" src="assets/js/app/pages/contact-page.js"></script>
+  <script type="module" src="assets/js/app/pages/quote-page.js"></script>
 </body>
 </html>

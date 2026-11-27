@@ -1,4 +1,3 @@
-import './admin-shell.js';
 import { app } from '../../core/bootstrap-app.js';
 import { escapeHtml, formatCurrency } from '../../core/formatters.js';
 import { findServiceImage, serviceImages } from '../../core/service-images.js';

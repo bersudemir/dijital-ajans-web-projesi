@@ -1,4 +1,3 @@
-import './admin-shell.js';
 import { app } from '../../core/bootstrap-app.js';
 import { escapeHtml } from '../../core/formatters.js';
 import { metrics } from '../../core/statistics-data.js';

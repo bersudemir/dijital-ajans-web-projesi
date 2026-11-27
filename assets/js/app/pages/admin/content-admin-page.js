@@ -1,4 +1,3 @@
-import './admin-shell.js';
 
 const form = document.querySelector('[data-content-form]');
 const status = document.querySelector('[data-content-status]');

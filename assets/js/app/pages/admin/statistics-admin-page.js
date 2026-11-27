@@ -1,4 +1,3 @@
-import './admin-shell.js';
 import { escapeHtml } from '../../core/formatters.js';
 import { metrics, completedProjects, serviceBreakdown, satisfaction, averageSatisfaction } from '../../core/statistics-data.js';
 

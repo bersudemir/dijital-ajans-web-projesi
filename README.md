@@ -6,7 +6,7 @@ NovaSoft Ajans, Web Tasarımı dersi kapsamında geliştirilen kurgusal bir diji
 
 ![NovaSoft Ajans ana sayfası: lacivert giriş bölümü, dijital ürün illüstrasyonu ve dört istatistik kartı](docs/screenshots/ana-sayfa.png)
 
-Ekran görüntüleri: [Hizmetler](docs/screenshots/hizmetler.png), [İletişim](docs/screenshots/iletisim.png), [Yönetici girişi](docs/screenshots/yonetici-girisi.png), [Yönetim paneli](docs/screenshots/yonetim-paneli.png).
+Ekran görüntüleri: [Ana sayfa](docs/screenshots/ana-sayfa.png), [Ana sayfa duyuruları](docs/screenshots/ana-sayfa-duyurular.png), [Hizmetler](docs/screenshots/hizmetler.png), [Hizmet detayı](docs/screenshots/hizmet-detayi.png), [Duyurular](docs/screenshots/duyurular.png), [Duyuru modalı](docs/screenshots/duyuru-modali.png), [Sayılarla Ajans](docs/screenshots/sayilarla-ajans.png), [İletişim](docs/screenshots/iletisim.png), [Harita](docs/screenshots/harita.png), [Yönetici girişi](docs/screenshots/yonetici-girisi.png), [Yönetim paneli](docs/screenshots/yonetim-paneli.png), [İçerik yönetimi](docs/screenshots/icerik-yonetimi.png) ve [mobil görünüm](docs/screenshots/mobil-gorunum.png).
 
 ## Canlı Demo
 
@@ -120,6 +120,24 @@ flowchart LR
     BaseRepository --> Adapter["LocalStorageAdapter"]
     Adapter --> Storage[("Tarayıcı LocalStorage")]
 ```
+
+### OOP Yapısı
+
+Kod, nesne yönelimli programlamayı (OOP) küçük ve belirli işleri olan sınıflarla uygular:
+
+- **Model (`Service`, `Announcement`)** bir hizmetin veya duyurunun hangi alanları taşıdığını belirler ve kayıt oluşturulurken temel alanları doğrular.
+- **Repository (`BaseRepository`, `ServiceRepository`, `AnnouncementRepository`)** kayıtları bulma, kaydetme, silme ve başlangıç verisini ekleme işlerini yürütür. `ServiceRepository` ve `AnnouncementRepository`, ortak işlemleri `BaseRepository` sınıfından devralır; kendilerine özgü sorguları ayrıca tanımlar. Bu, burada kullanılan kalıtım örneğidir.
+- **Service (`ServiceService`, `AnnouncementService`)** uygulama kurallarını uygular. Örneğin hizmet adını doğrular, slug üretir ve yalnızca aktif hizmetlerin ziyaretçilere açılmasını sağlar.
+- **Page modülleri** sayfadaki HTML öğelerini günceller ve kullanıcı etkileşimlerini ilgili servise iletir. Depolama ayrıntılarını doğrudan yönetmeleri gerekmez.
+- **`LocalStorageAdapter`** tarayıcı depolamasına erişimi tek noktada toplar. Anahtar oluşturma ve JSON okuma/yazma işlemlerini kendi içinde tutması kapsüllemeye örnektir.
+
+Bu ayrım, her dosyanın sorumluluğunu anlaşılır kılar. Yeni bir sunucu veya veritabanı eklemez; mevcut tarayıcı tabanlı çalışma biçimini korur.
+
+### Veri Yönetimi
+
+Hizmet ve duyuru kayıtları, `digitalAgency:` önekiyle `localStorage` içinde tutulur; örneğin koleksiyon anahtarları `digitalAgency:services` ve `digitalAgency:announcements` şeklindedir. Sayfa içerikleri, istatistikler, birimler, teklif talepleri ve geri bildirimler de aynı önek altında ayrı kayıtlara yazılır. Yönetici oturum işareti ise `sessionStorage` içindeki `digitalAgency:adminDemoSession` anahtarındadır ve sekme kapanınca sona erer. Bu adlar uygulamanın mevcut veri biçiminin parçasıdır.
+
+Tarayıcı depolamasındaki kayıtlar uygulama tarafından JSON olarak okunur ve yazılır. Koleksiyonlar ilk açılışta yoksa başlangıç verisi eklenir; var olan kayıtların üzerine başlangıç verisi yazılmaz.
 
 ## Projenin Sınırlılıkları
 
